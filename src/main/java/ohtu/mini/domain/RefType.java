@@ -12,7 +12,7 @@ public class RefType implements Serializable {
 	@Column(name="id")
 	private long id;
 
-	@Column(name="type_name", length = 99)
+	@Column(name="type_name")
 	private String typeName;
 
 	public long getId() {

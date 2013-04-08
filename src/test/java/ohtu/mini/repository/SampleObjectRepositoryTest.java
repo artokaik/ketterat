@@ -15,6 +15,7 @@ public class SampleObjectRepositoryTest {
 
 	@Autowired
 	SampleObjectRepository sor;
+       
 
 	@Test
 	public void testAddingSampleObjectToDb() {

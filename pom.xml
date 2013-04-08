@@ -156,7 +156,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-version}</version>
+            <version>1.4.0.BUILD-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -171,6 +171,7 @@
                     <artifactId>spring-tx</artifactId>
                 </exclusion>
             </exclusions>
+            <type>jar</type>
         </dependency> 
 
         <dependency>

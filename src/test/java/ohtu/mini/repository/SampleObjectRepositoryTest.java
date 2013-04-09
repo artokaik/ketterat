@@ -39,7 +39,7 @@ public class SampleObjectRepositoryTest {
 		Assert.assertTrue(sor.count() >= 10);
 	}
 
-	@Test
+ 	@Test
 	public void testFindById() {
 		Assert.assertTrue(sor.findById(2) != null);
 	}
@@ -48,5 +48,6 @@ public class SampleObjectRepositoryTest {
 	public void testFindByAwesome() {
 		Assert.assertTrue(sor.findByAwesome(false).size() >= 1);
 	}
+   
 
 }

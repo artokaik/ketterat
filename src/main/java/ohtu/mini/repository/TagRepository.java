@@ -1,13 +1,12 @@
 package ohtu.mini.repository;
 
 import java.util.List;
-import ohtu.mini.domain.SampleObject;
 import ohtu.mini.domain.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TagRepository extends JpaRepository<SampleObject, Long>{
+public interface TagRepository extends JpaRepository<Tag, Long>{
 
 	public Tag findById(long id);
 	public List<Tag> findByTag(String tag);

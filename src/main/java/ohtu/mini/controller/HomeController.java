@@ -19,20 +19,20 @@ public class HomeController {
 //        return "home";
 //    }
     
-    @RequestMapping(value = "nakyma", method = RequestMethod.GET)
+    @RequestMapping(value = "alkunakyma", method = RequestMethod.GET)
     public String nakymaGet() {
         return "alkunakyma";
     }
 
     @RequestMapping(value = "*", method = RequestMethod.GET)
     public String redirectNakyma() {
-        return "redirect:/nakyma";
+        return "redirect:/alkunakyma";
     }
 
     @RequestMapping(value = "viitelisatty", method = RequestMethod.POST)
     public String lisaaOlut(@ModelAttribute Reference reference) {
         this.refService.add(reference);
-        return "redirect:/nakyma";
+        return "redirect:/alkunakyma";
     }
 
 }

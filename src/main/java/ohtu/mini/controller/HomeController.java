@@ -30,7 +30,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "viitelisatty", method = RequestMethod.POST)
-    public String lisaaOlut(@ModelAttribute Reference reference) {
+    public String addReference(@ModelAttribute Reference reference) {
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }

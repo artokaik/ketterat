@@ -36,8 +36,8 @@ public class Reference implements Serializable {
     private int volume;
     @Column(name = "number")
     private int number;
-//    @Column(name = "author")
-//    private String author;
+    @Column(name = "author")
+    private String author;
 
     public Long getId() {
         return id;
@@ -126,11 +126,11 @@ public class Reference implements Serializable {
         this.number = number;
     }
 
-//    public String getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(String author) {
-//        this.author = author;
-//    }
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

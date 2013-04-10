@@ -12,13 +12,13 @@ public class HomeController {
 //        return "home";
 //    }
     
-    @RequestMapping(value = "nakyma", method=RequestMethod.GET)
+    @RequestMapping(value = "alkunakyma", method=RequestMethod.GET)
     public String nakymaGet() {
         return "alkunakyma";
     } 
     
     @RequestMapping(value = "*", method=RequestMethod.GET)
-    public String redirectNakyma() {
-        return "redirect:/nakyma";
+    public String redirectAlkunakyma() {
+        return "redirect:/alkunakyma";
     } 
 }

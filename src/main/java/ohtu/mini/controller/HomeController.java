@@ -14,7 +14,7 @@ public class HomeController {
     
     @RequestMapping(value = "nakyma", method=RequestMethod.GET)
     public String nakymaGet() {
-        return "nakyma";
+        return "alkunakyma";
     } 
     
     @RequestMapping(value = "*", method=RequestMethod.GET)

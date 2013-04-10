@@ -3,6 +3,8 @@ package ohtu.mini.domain;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -10,6 +12,7 @@ import javax.persistence.OneToOne;
 public class Reference implements Serializable {
 
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 //	@Column(name="title")
@@ -19,8 +22,8 @@ public class Reference implements Serializable {
     private String title;
     @Column(name = "publish_year")
     private int year;
-    @Column(name = "book_title")
-    private String bookTitle;
+//    @Column(name = "book_title")
+//    private String bookTitle;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "pages")
@@ -36,7 +39,7 @@ public class Reference implements Serializable {
 //    @Column(name = "author")
 //    private String author;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -67,13 +70,13 @@ public class Reference implements Serializable {
         this.year = year;
     }
 
-    public String getBookTitle() {
-        return bookTitle;
-    }
-
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
-    }
+//    public String getBookTitle() {
+//        return bookTitle;
+//    }
+//
+//    public void setBookTitle(String bookTitle) {
+//        this.bookTitle = bookTitle;
+//    }
 
     public String getPublisher() {
         return publisher;

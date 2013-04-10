@@ -36,6 +36,9 @@ public class Reference implements Serializable {
 	@Column(name="number")
 	private int number;
 
+    public Reference() {
+    }
+
     public Reference(RefType refType, String title, int year, String bookTitle, String publisher, String pages, String address, String journal, int volume, int number) {
         this.refType = refType;
         this.title = title;

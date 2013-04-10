@@ -23,6 +23,9 @@ public class AuthorReference implements Serializable {
 	@OneToOne
 	private Reference reference;
 
+    public AuthorReference() {
+    }
+
     public AuthorReference(Author author, Reference reference) {
         this.author = author;
         this.reference = reference;

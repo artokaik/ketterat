@@ -12,7 +12,7 @@
         <title>BibTex-generaattori</title>
     </head>
     <body>
-        <h1>Lisää uusi artikkeliviite</h1>
+        <h2>Lisää uusi artikkeliviite</h2>
         
         <form action="${pageContext.request.contextPath}/viitelisatty" method="POST">
             Kirjoittaja/Author: <input type="text" name="author"><br/>
@@ -26,6 +26,7 @@
             Julkaisija/Publisher: <input type="text" name="publisher"><br/>
             Osoite/Address: <input type="text" name="address"><br/>
             <input type="submit" name="viite"><br/>        
+
         </form>
     </body>
 </html>

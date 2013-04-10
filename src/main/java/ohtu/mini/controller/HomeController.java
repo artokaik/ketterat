@@ -18,6 +18,7 @@ public class HomeController {
 //    public String home() {
 //        return "home";
 //    }
+    
     @RequestMapping(value = "nakyma", method = RequestMethod.GET)
     public String nakymaGet() {
         return "alkunakyma";
@@ -33,4 +34,5 @@ public class HomeController {
         this.refService.add(reference);
         return "redirect:/nakyma";
     }
+
 }

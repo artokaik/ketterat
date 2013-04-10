@@ -1,14 +1,10 @@
 ketterat
 ========
 
-Ketterät-ryhmän miniprojekti OhTu-kurssilla keväälllä 2013
+Ketterät-ryhmän miniprojekti OhTu-kurssilla keväällä 2013
 
-Product ja sprint backlogit:
+Product- ja sprint-backlogit:
 
 https://docs.google.com/spreadsheet/ccc?key=0AlN8O5iuc3f2dFd4OEJ0eEhlb2Eyc1BCMy1kRTlYVmc#gid=0
-
-Web-sovellusohjelmointi -kurssin materiaali:
-
-http://www.cs.helsinki.fi/group/java/k12-wad/materiaali.html
 
 	

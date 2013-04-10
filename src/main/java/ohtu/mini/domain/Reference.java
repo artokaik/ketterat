@@ -13,9 +13,9 @@ public class Reference implements Serializable {
 	@Id
 	private long id;
 
-	@Column(name="title")
-	@OneToOne
-	private RefType refType;
+//	@Column//(name="refType")
+//	@OneToOne//(cascade = )
+//	private RefType refType;
 
 	@Column(name = "title")
 	private String title;
@@ -36,6 +36,9 @@ public class Reference implements Serializable {
 	@Column(name="number")
 	private int number;
 
+	@Column(name="author")
+	private String author;
+
 	public long getId() {
 		return id;
 	}
@@ -44,13 +47,13 @@ public class Reference implements Serializable {
 		this.id = id;
 	}
 
-	public RefType getRefType() {
-		return refType;
-	}
-
-	public void setRefType(RefType refType) {
-		this.refType = refType;
-	}
+//	public RefType getRefType() {
+//		return refType;
+//	}
+//
+//	public void setRefType(RefType refType) {
+//		this.refType = refType;
+//	}
 
 	public String getTitle() {
 		return title;
@@ -122,6 +125,14 @@ public class Reference implements Serializable {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 }

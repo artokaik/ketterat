@@ -4,7 +4,10 @@ import java.util.List;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.repository.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class ReferenceServiceImpl implements ReferenceServiceInterface {
 
     @Autowired

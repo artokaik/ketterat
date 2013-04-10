@@ -15,6 +15,10 @@ public class RefType implements Serializable {
 	@Column(name="type_name")
 	private String typeName;
 
+    public RefType(String typeName) {
+        this.typeName = typeName;
+    }
+
 	public long getId() {
 		return id;
 	}

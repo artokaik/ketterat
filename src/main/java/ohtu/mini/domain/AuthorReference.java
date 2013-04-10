@@ -23,6 +23,11 @@ public class AuthorReference implements Serializable {
 	@OneToOne
 	private Reference reference;
 
+    public AuthorReference(Author author, Reference reference) {
+        this.author = author;
+        this.reference = reference;
+    }
+
 	public long getId() {
 		return id;
 	}

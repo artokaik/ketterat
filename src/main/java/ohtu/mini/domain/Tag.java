@@ -18,6 +18,13 @@ public class Tag implements Serializable {
 	@Column(name="tag")
 	private String tag;
 
+    public Tag() {
+    }
+
+    public Tag(String tag) {
+        this.tag = tag;
+    }
+
 	public long getId() {
 		return Id;
 	}

@@ -15,6 +15,10 @@ public class Author implements Serializable {
 	@Column(name="author_name", length = 99)
 	private String authorName;
 
+    public Author(String authorName) {
+        this.authorName = authorName;
+    }
+
 	public long getId() {
 		return id;
 	}

@@ -36,6 +36,19 @@ public class Reference implements Serializable {
 	@Column(name="number")
 	private int number;
 
+    public Reference(RefType refType, String title, int year, String bookTitle, String publisher, String pages, String address, String journal, int volume, int number) {
+        this.refType = refType;
+        this.title = title;
+        this.year = year;
+        this.bookTitle = bookTitle;
+        this.publisher = publisher;
+        this.pages = pages;
+        this.address = address;
+        this.journal = journal;
+        this.volume = volume;
+        this.number = number;
+    }
+
 	public long getId() {
 		return id;
 	}

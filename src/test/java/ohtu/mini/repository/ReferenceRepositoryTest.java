@@ -35,7 +35,6 @@ public class ReferenceRepositoryTest {
     public void setUp() {
         ref = new Reference();
         repo.deleteAll();
-        System.out.println("aloitus");
     }
 
     @After

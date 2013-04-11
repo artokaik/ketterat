@@ -19,13 +19,13 @@
             Artikkeli/Title: <input type="text" name="title"><br/>
 <!--            Kirja/Book title: <input type="text" name="bookTitle"><br/>-->
             Julkaisu/Journal: <input type="text" name="journal"><br/>
-            Nide/Volume: <input type="text" name="volume"><br/>
+            Vuosikerta/Volume: <input type="text" name="volume"><br/>
             Numero/Number: <input type="text" name="number"><br/>
             Vuosi/Year: <input type="text" name="year"><br/>           
             Sivut/Pages: <input type="text" name="pages"><br/>
             Julkaisija/Publisher: <input type="text" name="publisher"><br/>
             Osoite/Address: <input type="text" name="address"><br/>
-            <input type="submit" name="viite"><br/>        
+            <input type="submit" value="Lisää" name="viite"><br/>        
 
         </form>
     </body>

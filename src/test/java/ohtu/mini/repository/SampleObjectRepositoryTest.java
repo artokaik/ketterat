@@ -39,15 +39,15 @@ public class SampleObjectRepositoryTest {
 		Assert.assertTrue(sor.count() >= 10);
 	}
 
- 	@Test
-	public void testFindById() {
-		Assert.assertTrue(sor.findById(2) != null);
-	}
-
-	@Test
-	public void testFindByAwesome() {
-		Assert.assertTrue(sor.findByAwesome(false).size() >= 1);
-	}
+// 	@Test
+//	public void testFindById() {
+//		Assert.assertTrue(sor.findById(2) != null);
+//	}
+//
+//	@Test
+//	public void testFindByAwesome() {
+//		Assert.assertTrue(sor.findByAwesome(false).size() >= 1);
+//	}
    
 
 }

@@ -19,20 +19,31 @@ public class HomeController {
 //        return "home";
 //    }
     
-    @RequestMapping(value = "alkunakyma", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String nakymaGet() {
         return "alkunakyma";
     }
 
-    @RequestMapping(value = "*", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, value = "*")
     public String redirectNakyma() {
         return "redirect:/alkunakyma";
     }
 
-    @RequestMapping(value = "viitelisatty", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, value = "alkunakyma")
     public String addReference(@ModelAttribute Reference reference) {
         this.refService.add(reference);
-        return "redirect:/alkunakyma";
+        return "redirect:/viitelisatty";
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, value = "viitelisatty")
+    public String addReferenceZ(@ModelAttribute Reference reference) {
+        this.refService.add(reference);
+        return "redirect:/viitelisatty";
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "viitelisatty")
+    public String viitelisattyGet() {
+        return "viitelisatty";
     }
 
 }

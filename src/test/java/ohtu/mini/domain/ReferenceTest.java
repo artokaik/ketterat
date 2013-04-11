@@ -114,7 +114,7 @@ public class ReferenceTest {
 
     @Test
     public void testAuthor() {
-        String author = "Tekijä";
+        String author = "Tekija";
         ref.setAuthor(author);
         String result = ref.getAuthor();
         Assert.assertEquals(author, result);

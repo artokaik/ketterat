@@ -34,6 +34,6 @@ public class ReferenceServiceImplTest {
     public void tearDown() {
     }
     
-    @Test
-    public void hello() {}
+//    @Test
+//    public void hello() {}
 }

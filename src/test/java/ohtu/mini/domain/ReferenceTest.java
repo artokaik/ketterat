@@ -173,7 +173,7 @@ public class ReferenceTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         String actual = reference.toString();
-        String expected = "Whittington, Keith J., Infusing active learning into introductory programming courses, 2004, Consortium for Computing Sciences in Colleges, USA, J. Comput. Small Coll., 19 (5), pages 249--259";
+        String expected = "Whittington, Keith J. (2004). Infusing active learning into introductory programming courses. J. Comput. Small Coll. (Consortium for Computing Sciences in Colleges, USA) 19 (5): 249--259";
         Assert.assertTrue(expected.equals(actual));
     }
 }

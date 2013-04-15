@@ -164,7 +164,7 @@ public class Reference implements Serializable {
 
     @Override
     public String toString() {
-        String string = getAuthor() + ", " + getTitle() + ", " + getYear() + ", " + getPublisher() + ", " + getAddress() + ", " + getJournal() + ", " + getVolume() + " (" + getNumber() + "), pages " + getPages();
+        String string = getAuthor() + " (" + getYear() + "). " + getTitle() + ". " + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume() + " (" + getNumber() + "): " + getPages();
         return string;
     }
 }

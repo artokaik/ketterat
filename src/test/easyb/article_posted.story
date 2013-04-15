@@ -1,5 +1,3 @@
-import ohtu.*
-import ohtu.authentication.*
 import org.openqa.selenium.*
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 

@@ -18,10 +18,8 @@ public class Reference implements Serializable {
 //	@Column(name="title")
 //	@OneToOne
 //	private RefType refType;
-
-    @Column(name="abbreviation")
+    @Column(name = "abbreviation")
     private String abbreviation;
-
     @Column(name = "title")
     private String title;
     @Column(name = "publish_year")
@@ -89,7 +87,6 @@ public class Reference implements Serializable {
 //    public void setBookTitle(String bookTitle) {
 //        this.bookTitle = bookTitle;
 //    }
-
     public String getPublisher() {
         return publisher;
     }
@@ -146,7 +143,6 @@ public class Reference implements Serializable {
         this.author = author;
     }
 
-
     public String toBibtex() {
         StringBuilder sb = new StringBuilder();
         sb.append("@article{");
@@ -166,4 +162,9 @@ public class Reference implements Serializable {
         return sb.toString();
     }
 
+    @Override
+    public String toString() {
+        String string = getAuthor() + ", " + getTitle() + ", " + getYear() + ", " + getPublisher() + ", " + getAddress() + ", " + getJournal() + ", " + getVolume() + " (" + getNumber() + "), pages " + getPages();
+        return string;
+    }
 }

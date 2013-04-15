@@ -18,6 +18,10 @@ public class Reference implements Serializable {
 //	@Column(name="title")
 //	@OneToOne
 //	private RefType refType;
+
+    @Column(name="abbreviation")
+    private String abbreviation;
+
     @Column(name = "title")
     private String title;
     @Column(name = "publish_year")
@@ -45,6 +49,14 @@ public class Reference implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
 //	public RefType getRefType() {
@@ -133,4 +145,25 @@ public class Reference implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
+    public String toBibtex() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("@article{");
+        sb.append(this.getAbbreviation()).append(",\n");
+
+        sb.append("author").append(" = {").append(this.getAuthor()).append("},\n");
+        sb.append("title").append(" = {").append(this.getTitle()).append("},\n");
+        sb.append("journal").append(" = {").append(this.getJournal()).append("},\n");
+        sb.append("volume").append(" = {").append(this.getVolume()).append("},\n");
+        sb.append("number").append(" = {").append(this.getNumber()).append("},\n");
+        sb.append("year = {").append(this.getYear()).append("},\n");
+        sb.append("pages = {").append(this.getPages()).append("},\n");
+        sb.append("publisher = {").append(this.getPublisher()).append("},\n");
+        sb.append("address = {").append(this.getAddress()).append("},\n");
+
+        sb.append("}");
+        return sb.toString();
+    }
+
 }

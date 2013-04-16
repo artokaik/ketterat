@@ -23,7 +23,7 @@
     </properties>
 
     <dependencies>
-    <!-- spring -->
+        <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -35,7 +35,7 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-version}</version>
             <exclusions>
-        <!-- käytetään simple logging facadea commons logging-kirjaston sijaan -->
+                <!-- käytetään simple logging facadea commons logging-kirjaston sijaan -->
                 <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
@@ -330,6 +330,25 @@
                     <target>1.6</target>
                 </configuration>
 
+            </plugin>
+            
+            <plugin>
+                <groupId>org.easyb</groupId>
+                <artifactId>maven-easyb-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <storyType>html</storyType>
+                    <storyReport>${basedir}/target/easyb/easyb-report.html
+                    </storyReport>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -71,9 +71,9 @@ public class ReferenceRepositoryTest {
     public void testFindById() {
         long id = 2;
         ref.setId(id);
-        ref.setAddress("Testimäinen testi");
+        ref.setAddress("Testimainen testi");
         repo.save(ref);
-        Assert.assertTrue(repo.findById(id).getAddress().equals("Testimäinen testi"));
+        Assert.assertTrue(repo.findById(id).getAddress().equals("Testimainen testi"));
     }
 
     @Test

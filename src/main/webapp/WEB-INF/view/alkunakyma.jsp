@@ -12,6 +12,12 @@
         <title>BibTex-generaattori</title>
     </head>
     <body>
+        <h2>Järjestelmässä olevat viitteet</h2>
+        
+<!--        <c:forEach var="olut" items="${oluet}">
+                <li>${olut.name}</li>
+        </c:forEach>-->
+        
         <h2>Lisää uusi artikkeliviite</h2>
         
         <form action="${pageContext.request.contextPath}/viitelisatty" method="POST">

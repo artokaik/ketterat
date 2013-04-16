@@ -13,6 +13,23 @@
     <body>
         <h2>Viite lisätty!</h2>
         
+        <h2>Järjestelmässä olevat viitteet</h2>
+        
+        <c:forEach var="reference" items="${references}">
+                
+            <li>Kirjoittaja/Author: ${reference.author}</li>
+            <li>Artikkeli/Title: ${reference.title}</li>
+            <li>Julkaisu/Journal: ${reference.journal}</li>
+            <li>Vuosikerta/Volume: ${reference.volume}</li>
+            <li>Numero/Number: ${reference.number}</li>
+            <li>Vuosi/Year: ${reference.year}</li>
+            <li>Sivut/Pages: ${reference.pages}</li>
+            <li>Julkaisija/Publisher: ${reference.publisher}</li>
+            <li>Osoite/Address: ${reference.address}</li>
+            <br>
+            <br>
+        </c:forEach>
+        
         <h2>Lisää uusi artikkeliviite</h2>
         
         <form action="${pageContext.request.contextPath}/viitelisatty" method="POST">

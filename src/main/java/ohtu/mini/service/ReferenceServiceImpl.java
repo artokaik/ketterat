@@ -7,6 +7,7 @@ import ohtu.mini.domain.Reference;
 import ohtu.mini.repository.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ReferenceServiceImpl implements ReferenceServiceInterface {
@@ -15,6 +16,7 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
     ReferenceRepository referenceRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Reference> list() {
         return referenceRepository.findAll();
     }

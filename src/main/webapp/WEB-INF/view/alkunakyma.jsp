@@ -14,13 +14,23 @@
     <body>
         <h2>Järjestelmässä olevat viitteet</h2>
         
-<!--        <c:forEach var="olut" items="${oluet}">
-                <li>${olut.name}</li>
-        </c:forEach>-->
+        <c:forEach var="reference" items="${references}">
+                <li>Kirjoittaja/Author: ${reference.author}</li>
+                <li>Artikkeli/Title: ${reference.title}</li>
+                <li>Julkaisu/Journal: ${reference.journal}</li>
+                <li>Vuosikerta/Volume: ${reference.volume}</li>
+                <li>Numero/Number: ${reference.number}</li>
+                <li>Vuosi/Year: ${reference.year}</li>
+                <li>Sivut/Pages: ${reference.pages}</li>
+                <li>Julkaisija/Publisher: ${reference.publisher}</li>
+                <li>Osoite/Address: ${reference.address}</li>
+                <br>
+                <br>
+        </c:forEach>
         
         <h2>Lisää uusi artikkeliviite</h2>
         
-        <form action="${pageContext.request.contextPath}/viitelisatty" method="POST">
+        <form action="${pageContext.request.contextPath}/alkunakyma" method="POST">
             Kirjoittaja/Author: <input type="text" name="author" value=""><br/>
             Artikkeli/Title: <input type="text" name="title" value=""><br/>
 <!--            Kirja/Book title: <input type="text" name="bookTitle value=""><br/>-->

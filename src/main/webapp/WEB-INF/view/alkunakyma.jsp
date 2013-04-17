@@ -31,7 +31,7 @@
     </c:forEach>
 
         
-    <a href="/miniprojekti/bibtex">Bibtex-linkki</a>
+    <a href="bibtex">Bibtex-linkki</a>
 
     <h2>Lisää uusi artikkeliviite</h2>
 

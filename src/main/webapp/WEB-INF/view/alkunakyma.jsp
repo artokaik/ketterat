@@ -17,6 +17,7 @@
         <h2>Järjestelmässä olevat viitteet</h2>
 
         <c:forEach var="reference" items="${references}">
+        <li>Lyhenne/Abbreviation: ${reference.abbreviation}</li>
         <li>Kirjoittaja/Author: ${reference.author}</li>
         <li>Artikkeli/Title: ${reference.title}</li>
         <li>Julkaisu/Journal: ${reference.journal}</li>
@@ -29,13 +30,13 @@
         <br>
     </c:forEach>
 
-    <form method="POST" action="${pageContext.request.contextPath}/luobibtex">
-        <input type="submit" value="Luo BibTex" />
-    </form>    
+        
+    <a href="/miniprojekti/bibtex">Bibtex-linkki</a>
 
     <h2>Lisää uusi artikkeliviite</h2>
 
     <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+        Lyhenne/Abbreviation: <input type="text" name="abbreviation" value=""><br/>
         Kirjoittaja/Author: <input type="text" name="author" value=""><br/>
         Artikkeli/Title: <input type="text" name="title" value=""><br/>
         <!--            Kirja/Book title: <input type="text" name="bookTitle value=""><br/>-->

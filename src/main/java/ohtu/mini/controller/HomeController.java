@@ -1,6 +1,8 @@
 package ohtu.mini.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.service.ReferenceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,17 @@ public class HomeController {
         model.addAttribute("references", refService.list());
         return "alkunakyma";
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "bibtex")
+    public String bibtexGet(Model model) {
+        List<Reference> References = refService.list();
+        ArrayList<String> Texes = new ArrayList<String>();
+        for (Reference reference : References) {
+            Texes.add(reference.toBibtex());
+        }
+        model.addAttribute("texes", Texes);
+        return "bibtex";
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "*")
     public String redirectNakyma() {
@@ -37,28 +50,4 @@ public class HomeController {
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }
-    
-    @RequestMapping(method = RequestMethod.POST, value = "luobibtex")
-    public String createBibTex() throws IOException {
-        refService.generateBibtex("bibtex", refService.list());
-        return "redirect:/alkunakyma";
-    }
-    
-//    @RequestMapping(method = RequestMethod.POST, value = "viitelisatty")
-//    public String addReferenceViiteLisatty(@ModelAttribute Reference reference) {
-//        this.refService.add(reference);
-//        return "redirect:/viitelisatty";
-//    }
-    
-//    @RequestMapping(method = RequestMethod.GET, value = "viitelisatty")
-//    public String viiteLisattyGet() {
-//        return "viitelisatty";
-//    }
-    
-//    @RequestMapping(method = RequestMethod.GET, value = "viitelisatty")
-//    public String viiteLisattyGet(Model model) {
-//        model.addAttribute("references", refService.list());
-//        return "viitelisatty";
-//    }
-
 }

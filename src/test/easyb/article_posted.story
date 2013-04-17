@@ -1,16 +1,16 @@
 import org.openqa.selenium.*
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-description 'User can post an article reference into the system'
+description 'User can see a list of references posted to the system'
 
-scenario "user can post an article reference if all the fields are filled", {
+scenario "If user posts a reference, that one can be found from the list", {
     given 'form for posting articles to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
-    when 'all the information is entered', {
+    when 'reference is saved', {
         element = driver.findElement(By.name("author"));
-        element.sendKeys("Arto Kaikkonen");
+        element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Hemmetin hyvä artikkeli");
         element = driver.findElement(By.name("journal"));
@@ -31,31 +31,58 @@ scenario "user can post an article reference if all the fields are filled", {
         element = driver.findElement(By.name("viite"));
         element.submit();
     }     
-    then 'reference is saved to the database', {
-        driver.getPageSource().contains("Viite lisätty!").shouldBe true
+    then 'the reference can be found from the list of references', {
+        driver.getPageSource().contains("Kirjoittaja/Author: Arto Koo").shouldBe true
     }
 }
 
-scenario "user can post article even if some fields are empty", {
+scenario "If user posts two references, the first one can be found from the list", {
     given 'form for posting articles to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
-    when 'some information is entered but some fields are empty', {
+    when 'two references are saved', {
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("Täti Testaaja");
+        element = driver.findElement(By.name("title"));
+        element.sendKeys("Sairaan hyvä artikkeli");
+        element = driver.findElement(By.name("viite"));
+        element.submit();
+
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("Hemmetin hyvä artikkeli");
-        element = driver.findElement(By.name("year"));
-        element.sendKeys("1995");
-        element = driver.findElement(By.name("publisher"));
-        element.sendKeys("WSOY");
-
+        element.sendKeys("Hiton hyvä artikkeli");
         element = driver.findElement(By.name("viite"));
         element.submit();
     }     
-    then 'reference is saved to the database', {
-        driver.getPageSource().contains("Viite lisätty!").shouldBe true
+    then 'the first reference can be found from the list of references', {
+        driver.getPageSource().contains("Kirjoittaja/Author: Täti Testaaja").shouldBe true
+    }
+}
+
+scenario "If user posts two references, the second one can be found from the list", {
+    given 'form for posting articles to the system is opened', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
+    }
+    when 'two references are saved', {
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("Kalle kirjoittaja");
+        element = driver.findElement(By.name("title"));
+        element.sendKeys("Pirun hyvä artikkeli");
+        element = driver.findElement(By.name("viite"));
+        element.submit();
+
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("Joku Jaarittelija");
+        element = driver.findElement(By.name("title"));
+        element.sendKeys("Aika hyvä artikkeli");
+        element = driver.findElement(By.name("viite"));
+        element.submit();
+    }     
+    then 'the first reference can be found from the list of references', {
+        driver.getPageSource().contains("Kirjoittaja/Author: Joku Jaarittelija").shouldBe true
     }
 }
 

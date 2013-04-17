@@ -1,5 +1,6 @@
 package ohtu.mini.controller;
 
+import java.io.IOException;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.service.ReferenceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,15 @@ public class HomeController {
         return "redirect:/alkunakyma";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "alkunakyma")
+    @RequestMapping(method = RequestMethod.POST, value = "lisaaviite")
     public String addReference(@ModelAttribute Reference reference) {
         this.refService.add(reference);
+        return "redirect:/alkunakyma";
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, value = "luobibtex")
+    public String createBibTex() throws IOException {
+        refService.generateBibtex("bibtex", refService.list());
         return "redirect:/alkunakyma";
     }
     

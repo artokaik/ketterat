@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-    
+
     @Autowired
     ReferenceServiceInterface refService;
 
@@ -22,13 +22,17 @@ public class HomeController {
 //    public String home() {
 //        return "home";
 //    }
-    
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String nakymaGet(Model model) {
-        model.addAttribute("references", refService.list());
+        List<Reference> references = refService.list();
+        ArrayList<String> refStrings = new ArrayList<String>();
+        for (Reference reference : references) {
+            refStrings.add(reference.toString());
+        }
+        model.addAttribute("references", refStrings);
         return "alkunakyma";
     }
-    
+
     @RequestMapping(method = RequestMethod.GET, value = "bibtex")
     public String bibtexGet(Model model) {
         List<Reference> References = refService.list();

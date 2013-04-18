@@ -8,20 +8,15 @@
 <!DOCTYPE html>
 <html>
 
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BibTex-generaattori</title>
     </head>
     
     <body>
-
-
         <c:forEach var="tex" items="${texes}">
         <li>${tex}
         </c:forEach>
-
     </body>
-
 
 </html>

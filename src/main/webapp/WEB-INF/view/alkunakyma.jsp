@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
 
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BibTex-generaattori</title>
@@ -17,40 +16,27 @@
         <h2>Järjestelmässä olevat viitteet</h2>
 
         <c:forEach var="reference" items="${references}">
-        <li>Lyhenne/Abbreviation: ${reference.abbreviation}</li>
-        <li>Kirjoittaja/Author: ${reference.author}</li>
-        <li>Artikkeli/Title: ${reference.title}</li>
-        <li>Julkaisu/Journal: ${reference.journal}</li>
-        <li>Vuosikerta/Volume: ${reference.volume}</li>
-        <li>Numero/Number: ${reference.number}</li>
-        <li>Vuosi/Year: ${reference.year}</li>
-        <li>Sivut/Pages: ${reference.pages}</li>
-        <li>Julkaisija/Publisher: ${reference.publisher}</li>
-        <li>Osoite/Address: ${reference.address}</li>
-        <br>
-    </c:forEach>
+            <li>${reference}<br/><br/>
+        </c:forEach>
 
-        
-    <a href="bibtex">Bibtex-linkki</a>
+        <a href="bibtex">BibTex-linkki</a>
 
-    <h2>Lisää uusi artikkeliviite</h2>
+        <h2>Lisää uusi artikkeliviite</h2>
 
-    <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-        Lyhenne/Abbreviation: <input type="text" name="abbreviation" value=""><br/>
-        Kirjoittaja/Author: <input type="text" name="author" value=""><br/>
-        Artikkeli/Title: <input type="text" name="title" value=""><br/>
-        <!--            Kirja/Book title: <input type="text" name="bookTitle value=""><br/>-->
-        Julkaisu/Journal: <input type="text" name="journal" value=""><br/>
-        Vuosikerta/Volume: <input type="text" name="volume" value="0"><br/>
-        Numero/Number: <input type="text" name="number" value="0"><br/>
-        Vuosi/Year: <input type="text" name="year" value="0"><br/>           
-        Sivut/Pages: <input type="text" name="pages" value=""><br/>
-        Julkaisija/Publisher: <input type="text" name="publisher" value=""><br/>
-        Osoite/Address: <input type="text" name="address" value=""><br/>
-        <input type="submit" value="Lisää" name="viite"><br/>        
-
-    </form>
-</body>
-
+        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+            Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
+            Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
+            Artikkeli/Title: <input type="text" name="title" size="50" value=""><br/>
+            <!--            Kirja/Book title: <input type="text" name="bookTitle value=""><br/>-->
+            Julkaisu/Journal: <input type="text" name="journal" size="50" value=""><br/>
+            Vuosikerta/Volume: <input type="text" name="volume" size="5" value="0"><br/>
+            Numero/Number: <input type="text" name="number" size="5" value="0"><br/>
+            Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
+            Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
+            Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
+            Osoite/Address: <input type="text" name="address" size="24" value=""><br/><br/>
+            <input type="submit" value="Lisää" name="viite"><br/>        
+        </form>
+    </body>
 
 </html>

@@ -184,6 +184,8 @@ public class Reference implements Serializable {
     	s = (Normalizer.normalize(s, Normalizer.Form.NFD));
     	if (s.charAt(1) == 778)
     		return "\\"+s.charAt(0)+s.charAt(0);
+        if (accents.get(0+s.charAt(1)) == null)
+                return Character.toString(s.charAt(0));
     	return "\\"+accents.get(0+s.charAt(1))+"{"+s.charAt(0)+"}";	
     }
     
@@ -191,8 +193,13 @@ public class Reference implements Serializable {
     	accents.put(768,"`"); // `
     	accents.put(769,"´"); // ´
     	accents.put(770,"^"); // ^
-    	accents.put(771,"\""); // ~
+    	accents.put(771,"~"); // ~
     	accents.put(776,"\""); // ¨
+    	accents.put(780,"v"); // 
+        accents.put(774,"u"); // 
+        accents.put(772,"="); // 
+        accents.put(807,"c"); // 
+        accents.put(808,"c"); // 
     }
 
     @Override

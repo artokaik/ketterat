@@ -40,7 +40,7 @@ public class HomeController {
     
     @RequestMapping(method = RequestMethod.POST, value = "luobibtex")
     public String createBibTex() throws IOException {
-        refService.generateBibtex("bibtex", refService.list());
+        refService.generateBibtex("bibtex.txt", refService.list());
         return "redirect:/alkunakyma";
     }
     

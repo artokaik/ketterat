@@ -40,5 +40,6 @@ scenario "user can create a bibtex if there is at least one reference in the sys
         driver.getPageSource().contains("@article{ako89,").shouldBe true
         driver.getPageSource().contains("author = {Arto Koo},").shouldBe true
         driver.getPageSource().contains("publisher = {WSOY},").shouldBe true
+        driver.getPageSource().contains("publisher = {WSOY},").shouldBe true
     }
 }

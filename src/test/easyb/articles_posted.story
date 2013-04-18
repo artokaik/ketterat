@@ -9,10 +9,12 @@ scenario "user can post an article reference if all the fields are filled", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'all the information is entered', {
+        element = driver.findElement(By.name("abbreviation"));
+        element.sendKeys("ako92");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("Hemmetin hyvä artikkeli");
+        element.sendKeys("Melkosen hyvä artikkeli");
         element = driver.findElement(By.name("journal"));
         element.sendKeys("Joku lehti");
         element = driver.findElement(By.name("volume"));
@@ -20,7 +22,7 @@ scenario "user can post an article reference if all the fields are filled", {
         element = driver.findElement(By.name("number"));
         element.sendKeys("3");
         element = driver.findElement(By.name("year"));
-        element.sendKeys("1995");
+        element.sendKeys("1992");
         element = driver.findElement(By.name("pages"));
         element.sendKeys("12-15");
         element = driver.findElement(By.name("publisher"));
@@ -32,7 +34,7 @@ scenario "user can post an article reference if all the fields are filled", {
         element.submit();
     }     
     then 'reference is saved to the database', {
-        driver.getPageSource().contains("Kirjoittaja/Author: Arto Koo").shouldBe true
+        driver.getPageSource().contains("Arto Koo (1992)").shouldBe true
     }
 }
 
@@ -47,7 +49,7 @@ scenario "user can post article even if some fields are empty", {
         element = driver.findElement(By.name("title"));
         element.sendKeys("Hemmetin hyvä artikkeli");
         element = driver.findElement(By.name("year"));
-        element.sendKeys("1995");
+        element.sendKeys("1990");
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("WSOY");
 
@@ -55,7 +57,7 @@ scenario "user can post article even if some fields are empty", {
         element.submit();
     }     
     then 'reference is saved to the database', {
-        driver.getPageSource().contains("Kirjoittaja/Author: Arto Kaikkonen").shouldBe true
+        driver.getPageSource().contains("Arto Kaikkonen (1990)").shouldBe true
     }
 }
 

@@ -9,6 +9,8 @@ scenario "If user posts a reference, that one can be found from the list", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'reference is saved', {
+        element = driver.findElement(By.name("abbreviation"));
+        element.sendKeys("ako95");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
@@ -32,7 +34,7 @@ scenario "If user posts a reference, that one can be found from the list", {
         element.submit();
     }     
     then 'the reference can be found from the list of references', {
-        driver.getPageSource().contains("Kirjoittaja/Author: Arto Koo").shouldBe true
+        driver.getPageSource().contains("Arto Koo").shouldBe true
     }
 }
 
@@ -42,6 +44,8 @@ scenario "If user posts two references, the first one can be found from the list
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'two references are saved', {
+        element = driver.findElement(By.name("abbreviation"));
+        element.sendKeys("tatxx");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Täti Testaaja");
         element = driver.findElement(By.name("title"));
@@ -49,6 +53,8 @@ scenario "If user posts two references, the first one can be found from the list
         element = driver.findElement(By.name("viite"));
         element.submit();
 
+        element = driver.findElement(By.name("abbreviation"));
+        element.sendKeys("akaxx");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));
@@ -57,7 +63,7 @@ scenario "If user posts two references, the first one can be found from the list
         element.submit();
     }     
     then 'the first reference can be found from the list of references', {
-        driver.getPageSource().contains("Kirjoittaja/Author: Täti Testaaja").shouldBe true
+        driver.getPageSource().contains("Täti Testaaja").shouldBe true
     }
 }
 
@@ -82,7 +88,7 @@ scenario "If user posts two references, the second one can be found from the lis
         element.submit();
     }     
     then 'the first reference can be found from the list of references', {
-        driver.getPageSource().contains("Kirjoittaja/Author: Joku Jaarittelija").shouldBe true
+        driver.getPageSource().contains("Joku Jaarittelija").shouldBe true
     }
 }
 

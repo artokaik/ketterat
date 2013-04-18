@@ -55,11 +55,6 @@ public class HomeController {
         return "redirect:/alkunakyma";
     }
     
-    @RequestMapping(method = RequestMethod.POST, value = "luobibtex")
-    public String createBibTex() throws IOException {
-        refService.generateBibtex("bibtex.txt", refService.list());
-        return "redirect:/alkunakyma";
-    }
     
 //    @RequestMapping(method = RequestMethod.POST, value = "viitelisatty")
 //    public String addReferenceViiteLisatty(@ModelAttribute Reference reference) {

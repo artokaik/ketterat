@@ -1,6 +1,8 @@
 package ohtu.mini.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.service.ReferenceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-    
+
     @Autowired
     ReferenceServiceInterface refService;
 
@@ -20,11 +22,26 @@ public class HomeController {
 //    public String home() {
 //        return "home";
 //    }
-    
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String nakymaGet(Model model) {
-        model.addAttribute("references", refService.list());
+        List<Reference> references = refService.list();
+        ArrayList<String> refStrings = new ArrayList<String>();
+        for (Reference reference : references) {
+            refStrings.add(reference.toString());
+        }
+        model.addAttribute("references", refStrings);
         return "alkunakyma";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "bibtex")
+    public String bibtexGet(Model model) {
+        List<Reference> References = refService.list();
+        ArrayList<String> Texes = new ArrayList<String>();
+        for (Reference reference : References) {
+            Texes.add(reference.toBibtex());
+        }
+        model.addAttribute("texes", Texes);
+        return "bibtex";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "*")
@@ -60,5 +77,6 @@ public class HomeController {
 //        model.addAttribute("references", refService.list());
 //        return "viitelisatty";
 //    }
+
 
 }

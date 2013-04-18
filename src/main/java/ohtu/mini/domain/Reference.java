@@ -176,6 +176,8 @@ public class Reference implements Serializable {
     }
     
     private String normalize(String s) {
+        if (s.equals("{") || s.equals("}")|| s.equals("$"))
+            return "\\"+s;
     	if (Normalizer.isNormalized(s, Normalizer.Form.NFD)){
     		return s;
     	}

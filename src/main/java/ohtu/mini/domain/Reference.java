@@ -7,9 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.text.Normalizer;
+import java.util.HashMap;
 
 @Entity
 public class Reference implements Serializable {
+    
+    private HashMap<Integer,String> accents = new HashMap<Integer,String>();
 
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -144,22 +148,49 @@ public class Reference implements Serializable {
     }
 
     public String toBibtex() {
+        createAccents();
         StringBuilder sb = new StringBuilder();
         sb.append("@article{");
         sb.append(this.getAbbreviation()).append(",\n");
 
-        sb.append("author").append(" = {").append(this.getAuthor()).append("},\n");
-        sb.append("title").append(" = {").append(this.getTitle()).append("},\n");
-        sb.append("journal").append(" = {").append(this.getJournal()).append("},\n");
+        sb.append("author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
+        sb.append("title").append(" = {").append(stringToBib(this.getTitle())).append("},\n");
+        sb.append("journal").append(" = {").append(stringToBib(this.getJournal())).append("},\n");
         sb.append("volume").append(" = {").append(this.getVolume()).append("},\n");
         sb.append("number").append(" = {").append(this.getNumber()).append("},\n");
         sb.append("year = {").append(this.getYear()).append("},\n");
         sb.append("pages = {").append(this.getPages()).append("},\n");
-        sb.append("publisher = {").append(this.getPublisher()).append("},\n");
-        sb.append("address = {").append(this.getAddress()).append("},\n");
+        sb.append("publisher = {").append(stringToBib(this.getPublisher())).append("},\n");
+        sb.append("address = {").append(stringToBib(this.getAddress())).append("},\n");
 
         sb.append("}");
         return sb.toString();
+    }
+    
+    public String stringToBib(String s) {
+    	String output = "";
+    	for (char ch: s.toCharArray()) {
+            output = output+normalize(Character.toString(ch));
+    	}
+           return output;	
+    }
+    
+    private String normalize(String s) {
+    	if (Normalizer.isNormalized(s, Normalizer.Form.NFD)){
+    		return s;
+    	}
+    	s = (Normalizer.normalize(s, Normalizer.Form.NFD));
+    	if (s.charAt(1) == 778)
+    		return "\\"+s.charAt(0)+s.charAt(0);
+    	return "\\"+accents.get(0+s.charAt(1))+"{"+s.charAt(0)+"}";	
+    }
+    
+    private void createAccents() {
+    	accents.put(768,"`"); // `
+    	accents.put(769,"´"); // ´
+    	accents.put(770,"^"); // ^
+    	accents.put(771,"\""); // ~
+    	accents.put(776,"\""); // ¨
     }
 
     @Override

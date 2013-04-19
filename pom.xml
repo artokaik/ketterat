@@ -19,7 +19,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
@@ -285,7 +284,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <repositories>

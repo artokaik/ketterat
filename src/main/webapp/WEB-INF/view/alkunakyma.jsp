@@ -19,7 +19,7 @@
             <li>${reference}<br/><br/>
         </c:forEach>
 
-        <a href="bibtex">BibTex-linkki</a>
+        <a href="bibtex">BibTex-linkki</a> - <a href="bibfile">Bibtex fileenä</a>
 
         <h2>Lisää uusi artikkeliviite</h2>
 

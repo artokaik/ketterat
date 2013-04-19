@@ -12,7 +12,7 @@ scenario "user can create a bibtex if there is at least one reference in the sys
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("Hemmetin hyvä artikkeli");
+        element.sendKeys("Hemmetin hyva artikkeli");
         element = driver.findElement(By.name("journal"));
         element.sendKeys("Joku lehti");
         element = driver.findElement(By.name("volume"));
@@ -39,7 +39,6 @@ scenario "user can create a bibtex if there is at least one reference in the sys
     then 'the reference is printed to the screen in bibtex-format', {
         driver.getPageSource().contains("@article{ako89,").shouldBe true
         driver.getPageSource().contains("author = {Arto Koo},").shouldBe true
-        driver.getPageSource().contains("publisher = {WSOY},").shouldBe true
         driver.getPageSource().contains("publisher = {WSOY},").shouldBe true
     }
 }

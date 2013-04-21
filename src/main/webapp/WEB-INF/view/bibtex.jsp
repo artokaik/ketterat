@@ -12,11 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BibTex-generaattori</title>
     </head>
-    
+
     <body>
         <c:forEach var="tex" items="${texes}">
-        <li>${tex}
+            <pre>
+            <li>${tex}
+            </pre>
         </c:forEach>
     </body>
-
 </html>

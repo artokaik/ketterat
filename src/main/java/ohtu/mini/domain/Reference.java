@@ -152,16 +152,16 @@ public class Reference implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("@article{");
         sb.append(this.getAbbreviation()).append(",\n");
-
-        sb.append("author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
-        sb.append("title").append(" = {").append(stringToBib(this.getTitle())).append("},\n");
-        sb.append("journal").append(" = {").append(stringToBib(this.getJournal())).append("},\n");
-        sb.append("volume").append(" = {").append(this.getVolume()).append("},\n");
-        sb.append("number").append(" = {").append(this.getNumber()).append("},\n");
-        sb.append("year = {").append(this.getYear()).append("},\n");
-        sb.append("pages = {").append(this.getPages()).append("},\n");
-        sb.append("publisher = {").append(stringToBib(this.getPublisher())).append("},\n");
-        sb.append("address = {").append(stringToBib(this.getAddress())).append("},\n");
+        
+        sb.append("    author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
+        sb.append("    title").append(" = {").append(stringToBib(this.getTitle())).append("},\n");
+        sb.append("    journal").append(" = {").append(stringToBib(this.getJournal())).append("},\n");
+        sb.append("    volume").append(" = {").append(this.getVolume()).append("},\n");
+        sb.append("    number").append(" = {").append(this.getNumber()).append("},\n");
+        sb.append("    year = {").append(this.getYear()).append("},\n");
+        sb.append("    pages = {").append(this.getPages()).append("},\n");
+        sb.append("    publisher = {").append(stringToBib(this.getPublisher())).append("},\n");
+        sb.append("    address = {").append(stringToBib(this.getAddress())).append("},\n");
 
         sb.append("}");
         return sb.toString();

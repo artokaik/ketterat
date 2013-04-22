@@ -52,7 +52,7 @@ public class HomeController {
         return "bibtex";
     }
 
-    @RequestMapping(method= RequestMethod.GET, value="bibfile")
+    @RequestMapping(method= RequestMethod.GET, value="bibfile.tex")
 //    public void getBibFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
     public void getBibFile(HttpServletResponse response) {
         String filename = "refFile.txt";

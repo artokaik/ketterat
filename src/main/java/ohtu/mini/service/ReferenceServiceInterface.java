@@ -8,5 +8,6 @@ public interface ReferenceServiceInterface {
     
 	public List<Reference> list();
         public void add(Reference reference);
+        public void generateBibtex(String file, List<Reference> references) throws IOException;
         
 }

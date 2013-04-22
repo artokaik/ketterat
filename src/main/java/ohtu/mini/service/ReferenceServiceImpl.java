@@ -27,4 +27,22 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
     public ReferenceRepository getReferenceRepository() {
         return referenceRepository;
     }
+
+    @Override
+    public void generateAbbreviation(Reference reference) {
+        if (reference.getAbbreviation()==null ||reference.getAbbreviation().isEmpty()) {
+            String first3Letters = reference.getAuthor().substring(0, 3);
+            String year = reference.getYear() + "";
+            year = year.substring(2, 4);
+            String abbreviation = first3Letters + year;
+
+            char[] extraLetter = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+            int i = 0;
+            while (referenceRepository.findByAbbreviation(abbreviation) != null) {
+                abbreviation = abbreviation.substring(0, 5) + extraLetter[i];
+                i++;
+            }
+            reference.setAbbreviation(abbreviation);
+        }
+    }
 }

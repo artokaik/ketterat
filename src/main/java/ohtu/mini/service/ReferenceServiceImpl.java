@@ -31,9 +31,8 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
     }
 
     @Override
-<<<<<<< HEAD
     public void generateAbbreviation(Reference reference) {
-        if (reference.getAbbreviation()==null ||reference.getAbbreviation().isEmpty()) {
+//        if (reference.getAbbreviation() == null || reference.getAbbreviation().isEmpty()) {
             String first3Letters = reference.getAuthor().substring(0, 3);
             String year = reference.getYear() + "";
             year = year.substring(2, 4);
@@ -46,9 +45,10 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
                 i++;
             }
             reference.setAbbreviation(abbreviation);
-        }
+//        }
     }
-=======
+
+    @Override
     public void generateBibtex(String file, List<Reference> references) throws IOException {
         StringBuilder sb = new StringBuilder();
         for (Reference reference : references) {
@@ -58,7 +58,6 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
         FileWriter writer = new FileWriter(file);
         writer.write(sb.toString());
         writer.close();
-    } 
+    }
 
->>>>>>> 4dd1be10df6fda08cd6743b2f9fe7e1eac442687
 }

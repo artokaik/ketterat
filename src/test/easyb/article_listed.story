@@ -50,6 +50,8 @@ scenario "If user posts two references, the first one can be found from the list
         element.sendKeys("Täti Testaaja");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Sairaan hyvä artikkeli");
+        element = driver.findElement(By.name("year"));
+        element.sendKeys("1995");
         element = driver.findElement(By.name("viite"));
         element.submit();
 
@@ -59,6 +61,8 @@ scenario "If user posts two references, the first one can be found from the list
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Hiton hyvä artikkeli");
+        element = driver.findElement(By.name("year"));
+        element.sendKeys("1995");
         element = driver.findElement(By.name("viite"));
         element.submit();
     }     
@@ -77,13 +81,18 @@ scenario "If user posts two references, the second one can be found from the lis
         element.sendKeys("Kalle kirjoittaja");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Pirun hyvä artikkeli");
+        element = driver.findElement(By.name("year"));
+        element.sendKeys("1995");
         element = driver.findElement(By.name("viite"));
         element.submit();
+
 
         element = driver.findElement(By.name("author"));
         element.sendKeys("Joku Jaarittelija");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Aika hyvä artikkeli");
+        element = driver.findElement(By.name("year"));
+        element.sendKeys("1995");
         element = driver.findElement(By.name("viite"));
         element.submit();
     }     

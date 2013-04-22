@@ -45,9 +45,8 @@ public class ReferenceServiceImplTest {
         reference.setPages("259--269");
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
-        rsi.generateAbbreviation(reference);
-        Assert.assertEquals("Whi04", reference.getAbbreviation());
         rsi.add(reference);
+        Assert.assertEquals("Whi04", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -59,9 +58,8 @@ public class ReferenceServiceImplTest {
         reference.setPages("259--269");
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
-        rsi.generateAbbreviation(reference);
-        Assert.assertEquals("Whi04a", reference.getAbbreviation());
         rsi.add(reference);
+        Assert.assertEquals("Whi04a", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -73,7 +71,7 @@ public class ReferenceServiceImplTest {
         reference.setPages("259--269");
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
-        rsi.generateAbbreviation(reference);
+        rsi.add(reference);
         Assert.assertEquals("Whi04b", reference.getAbbreviation());
     }
 

@@ -23,15 +23,15 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
 
     @Override
     public void add(Reference reference) {
+        this.generateAbbreviation(reference);
         referenceRepository.save(reference);
     }
 
     public ReferenceRepository getReferenceRepository() {
         return referenceRepository;
     }
-
-    @Override
-    public void generateAbbreviation(Reference reference) {
+    
+    private void generateAbbreviation(Reference reference) {
 //        if (reference.getAbbreviation() == null || reference.getAbbreviation().isEmpty()) {
             String first3Letters = reference.getAuthor().substring(0, 3);
             String year = reference.getYear() + "";

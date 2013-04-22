@@ -79,7 +79,6 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.POST, value = "lisaaviite")
     public String addReference(@ModelAttribute Reference reference) {
-        this.refService.generateAbbreviation(reference);
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }

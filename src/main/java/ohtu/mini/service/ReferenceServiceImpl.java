@@ -1,5 +1,7 @@
 package ohtu.mini.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.repository.ReferenceRepository;
@@ -29,6 +31,7 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
     }
 
     @Override
+<<<<<<< HEAD
     public void generateAbbreviation(Reference reference) {
         if (reference.getAbbreviation()==null ||reference.getAbbreviation().isEmpty()) {
             String first3Letters = reference.getAuthor().substring(0, 3);
@@ -45,4 +48,17 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
             reference.setAbbreviation(abbreviation);
         }
     }
+=======
+    public void generateBibtex(String file, List<Reference> references) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        for (Reference reference : references) {
+            sb.append(reference.toBibtex());
+            sb.append("\n");
+        }
+        FileWriter writer = new FileWriter(file);
+        writer.write(sb.toString());
+        writer.close();
+    } 
+
+>>>>>>> 4dd1be10df6fda08cd6743b2f9fe7e1eac442687
 }

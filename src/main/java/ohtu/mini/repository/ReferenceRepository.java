@@ -10,5 +10,6 @@ public interface ReferenceRepository extends JpaRepository<Reference, Long>{
 
 	public Reference findById(long id);
 	public List<Reference> findByTitle(String title);
+        public Reference findByAbbreviation(String abbreviation);
 
 }

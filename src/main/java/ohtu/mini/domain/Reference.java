@@ -207,4 +207,5 @@ public class Reference implements Serializable {
         String string = getAuthor() + " (" + getYear() + "). " + getTitle() + ". " + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume() + " (" + getNumber() + "): " + getPages();
         return string;
     }
+
 }

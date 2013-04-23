@@ -1,5 +1,7 @@
 package ohtu.mini.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.repository.ReferenceRepository;
@@ -21,10 +23,41 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
 
     @Override
     public void add(Reference reference) {
+        this.generateAbbreviation(reference);
         referenceRepository.save(reference);
     }
 
     public ReferenceRepository getReferenceRepository() {
         return referenceRepository;
     }
+    
+    private void generateAbbreviation(Reference reference) {
+//        if (reference.getAbbreviation() == null || reference.getAbbreviation().isEmpty()) {
+            String first3Letters = reference.getAuthor().substring(0, 3);
+            String year = reference.getYear() + "";
+            year = year.substring(2, 4);
+            String abbreviation = first3Letters + year;
+
+            char[] extraLetter = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+            int i = 0;
+            while (referenceRepository.findByAbbreviation(abbreviation) != null) {
+                abbreviation = abbreviation.substring(0, 5) + extraLetter[i];
+                i++;
+            }
+            reference.setAbbreviation(abbreviation);
+//        }
+    }
+
+    @Override
+    public void generateBibtex(String file, List<Reference> references) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        for (Reference reference : references) {
+            sb.append(reference.toBibtex());
+            sb.append("\n");
+        }
+        FileWriter writer = new FileWriter(file);
+        writer.write(sb.toString());
+        writer.close();
+    }
+
 }

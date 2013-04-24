@@ -18,7 +18,7 @@
 
         <c:forEach var="reference" items="${references}">
         <li>
-            ${reference.string} (<a href="poista/${reference.id}">Poista)<br/>
+            ${reference.string} (<a href="poista/${reference.id}">Poista</a>)<br/>
         </li>
 
     </c:forEach> 

@@ -17,10 +17,10 @@
         <h2>Järjestelmässä olevat viitteet</h2>
 
         <c:forEach var="reference" items="${references}">
-            <form action="${pageContext.request.contextPath}/poistaviite" method="DELETE">
-                <li>${reference}<br/>
+            <form:form action="${pageContext.request.contextPath}/viite/${reference.id}" method="DELETE">
+                <li>${reference.string}<br/>
                     <input type="submit" value="Poista"><br/>
-            </form>
+            </form:form>
 
         </c:forEach> 
 

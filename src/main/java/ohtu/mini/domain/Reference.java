@@ -187,7 +187,6 @@ public class Reference implements Serializable {
         this.author = author;
     }
 
-<<<<<<< HEAD
     public String getString() {
         return string;
     }
@@ -196,20 +195,9 @@ public class Reference implements Serializable {
         this.string = string;
     }
 
-    public String toBibtex() {
-        createAccents();
-        StringBuilder sb = new StringBuilder();
-        if (reftype.toLowerCase().charAt(0) == 'b') {
-            sb.append("@book{");
-        } else if (reftype.toLowerCase().charAt(0) == 'i') {
-            sb.append("@inproceedings{");
-        } else {
-            sb.append("@article{");
-=======
     private String stringToBib(String s) {
-        if(s==null || s.isEmpty()){
+        if (s == null || s.isEmpty()) {
             return "";
->>>>>>> 154d2a51a2aaca44035e85e0fb3cf14193be24a0
         }
         String output = "";
         for (char ch : s.toCharArray()) {
@@ -241,11 +229,11 @@ public class Reference implements Serializable {
         accents.put(770, "^"); // ^
         accents.put(771, "~"); // ~
         accents.put(776, "\""); // ¨
-        accents.put(780, "v"); // 
-        accents.put(774, "u"); // 
-        accents.put(772, "="); // 
-        accents.put(807, "c"); // 
-        accents.put(808, "c"); // 
+        accents.put(780, "v"); //
+        accents.put(774, "u"); //
+        accents.put(772, "="); //
+        accents.put(807, "c"); //
+        accents.put(808, "c"); //
     }
 
     @Override
@@ -270,50 +258,49 @@ public class Reference implements Serializable {
         return palautus;
 
     }
-    
-        public String toBibtex() {
+
+    public String toBibtex() {
         createAccents();
         StringBuilder sb = new StringBuilder();
         sb.append("@" + reftype + "{");
         sb.append(this.getAbbreviation()).append(",\n");
-        sb.append(bibtexLine("author",stringToBib(this.getAuthor()),true));
-        sb.append(bibtexLine("title",stringToBib(this.getTitle()),false));
-        sb.append(bibtexLine("journal",stringToBib(this.getJournal()),false));
-        sb.append(bibtexLine("volume",this.getVolume(),false));
-        sb.append(bibtexLine("number",this.getNumber(),false));
-        sb.append(bibtexLine("year",this.getYear(),false));
-        sb.append(bibtexLine("pages",stringToBib(this.getPages()),false));
-        sb.append(bibtexLine("publisher",stringToBib(this.getPublisher()),false));
-        sb.append(bibtexLine("address",stringToBib(this.getAddress()),false));
-        sb.append(bibtexLine("month",stringToBib(this.getMonth()),false));
-        sb.append(bibtexLine("booktitle",stringToBib(this.getBookTitle()),false));
-        sb.append(bibtexLine("editor",stringToBib(this.getEditor()),false));
-        sb.append(bibtexLine("organization",stringToBib(this.getOrganization()),false));
+        sb.append(bibtexLine("author", stringToBib(this.getAuthor()), true));
+        sb.append(bibtexLine("title", stringToBib(this.getTitle()), false));
+        sb.append(bibtexLine("journal", stringToBib(this.getJournal()), false));
+        sb.append(bibtexLine("volume", this.getVolume(), false));
+        sb.append(bibtexLine("number", this.getNumber(), false));
+        sb.append(bibtexLine("year", this.getYear(), false));
+        sb.append(bibtexLine("pages", stringToBib(this.getPages()), false));
+        sb.append(bibtexLine("publisher", stringToBib(this.getPublisher()), false));
+        sb.append(bibtexLine("address", stringToBib(this.getAddress()), false));
+        sb.append(bibtexLine("month", stringToBib(this.getMonth()), false));
+        sb.append(bibtexLine("booktitle", stringToBib(this.getBookTitle()), false));
+        sb.append(bibtexLine("editor", stringToBib(this.getEditor()), false));
+        sb.append(bibtexLine("organization", stringToBib(this.getOrganization()), false));
         sb.append("\n}");
-        
+
 
         return sb.toString();
     }
-        private String bibtexLine(String line, int value, boolean firstLine){
-            if(value == 0){
-                return "";
-            }
-            return bibtexLine(line,value+"",firstLine);
+
+    private String bibtexLine(String line, int value, boolean firstLine) {
+        if (value == 0) {
+            return "";
         }
-        
-        private String bibtexLine(String line, String value, boolean firstLine){
-            StringBuilder sb = new StringBuilder();
-            if (value == null || value.isEmpty()){
-                return "";
-            } else {
-                if(!firstLine){
-                    sb.append(",\n");
-                }
-                sb.append("    " + line + " = {" + value + "}");
-                return sb.toString();
-                        
+        return bibtexLine(line, value + "", firstLine);
+    }
+
+    private String bibtexLine(String line, String value, boolean firstLine) {
+        StringBuilder sb = new StringBuilder();
+        if (value == null || value.isEmpty()) {
+            return "";
+        } else {
+            if (!firstLine) {
+                sb.append(",\n");
             }
+            sb.append(" " + line + " = {" + value + "}");
+            return sb.toString();
+
         }
-    
-    
+    }
 }

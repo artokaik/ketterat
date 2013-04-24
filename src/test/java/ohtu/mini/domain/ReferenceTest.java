@@ -149,21 +149,21 @@ public class ReferenceTest {
         reference.setBookTitle("");
 
         String refModel = "@article{w04,\n"
-                + "    author = {Whittington, Keith J.},\n"
-                + "    title = {Infusing active learning into introductory programming courses},\n"
-                + "    journal = {J. Comput. Small Coll.},\n"
-                + "    volume = {19},\n"
-                + "    number = {5},\n"
-                + "    year = {2004},\n"
-                + "    pages = {249--259},\n"
-                + "    publisher = {Consortium for Computing Sciences in Colleges},\n"
-                + "    address = {USA}\n"
+                + " author = {Whittington, Keith J.},\n"
+                + " title = {Infusing active learning into introductory programming courses},\n"
+                + " journal = {J. Comput. Small Coll.},\n"
+                + " volume = {19},\n"
+                + " number = {5},\n"
+                + " year = {2004},\n"
+                + " pages = {249--259},\n"
+                + " publisher = {Consortium for Computing Sciences in Colleges},\n"
+                + " address = {USA}\n"
                 + "}";
 
 //        System.out.println(refModel +"\n-------------\n" + reference.toBibtex());
-//        System.out.println("Tulostus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.println(refModel);
-//        System.out.println(reference.toBibtex());
+        System.out.println("Tulostus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(refModel);
+        System.out.println(reference.toBibtex());
         Assert.assertEquals(refModel, reference.toBibtex());
     }
     

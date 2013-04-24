@@ -86,7 +86,7 @@ public class AllController {
     public String addReference(@Valid @ModelAttribute Reference reference,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "alkunakyma";
+            return "virheellinensyote";
         }
         this.refService.add(reference);
         return "redirect:/alkunakyma";

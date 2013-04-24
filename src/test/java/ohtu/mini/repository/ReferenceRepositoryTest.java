@@ -33,6 +33,11 @@ public class ReferenceRepositoryTest {
     @Before
     public void setUp() {
         ref = new Reference();
+        ref.setYear(1999);
+        ref.setAuthor("Tekija");
+        ref.setVolume(1);
+        ref.setNumber(1);
+        ref.setTitle("Nimeke");
         repo.deleteAll();
     }
 

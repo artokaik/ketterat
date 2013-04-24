@@ -36,7 +36,7 @@ public class Reference implements Serializable {
     private String bookTitle;
     @Column(name = "publisher")
     private String publisher;
-    @Pattern(regexp = "flag=[1-99999]-[1-99999]|[1-99999]--[1-99999]|[1-99999] - [1-99999]|[1-99999] -- [1-99999]")
+//    @Pattern(regexp = "[1-99999](-|--| - | -- )[1-99999]")
     @Column(name = "pages")
     private String pages;
     @Column(name = "address")

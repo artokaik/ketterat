@@ -31,10 +31,14 @@
 
         <h2>Lisää uusi viite</h2>
 
-        
-            
-            <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-            Viitetyyppi: <input type="text" name="reftype" size="50" value=""/><br/>
+
+
+        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+            Viitetyyppi: <select name="reftype">
+                <option value="article">Artikkeli/Article</option>
+                <option value="inproceedings">Inproceedings</option>
+                <option value="book">Kirja/Book</option>
+            </select><br/>
             Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
             Toimittaja/Editor: <input type="text" name="editor" size="50" value=""><br/>
             Nimi/Title: <input type="text" name="title" size="50" value=""><br/>

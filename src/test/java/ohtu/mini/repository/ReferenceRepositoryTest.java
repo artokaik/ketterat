@@ -100,4 +100,5 @@ public class ReferenceRepositoryTest {
         repo.delete(ref);
         Assert.assertTrue(!repo.exists(id));
     }
+    
 }

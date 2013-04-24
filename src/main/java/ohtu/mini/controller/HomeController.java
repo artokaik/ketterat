@@ -31,7 +31,7 @@ public class HomeController {
 //        return "home";
 //    }
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
-    public String nakymaGet(Model model) {
+    public String getNakyma(Model model) {
         List<Reference> references = refService.list();
         ArrayList<String> refStrings = new ArrayList<String>();
         for (Reference reference : references) {
@@ -42,7 +42,7 @@ public class HomeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "bibtex")
-    public String bibtexGet(Model model) {
+    public String getBibtex(Model model) {
         List<Reference> References = refService.list();
         ArrayList<String> Texes = new ArrayList<String>();
         for (Reference reference : References) {
@@ -50,6 +50,12 @@ public class HomeController {
         }
         model.addAttribute("texes", Texes);
         return "bibtex";
+    }
+    
+    @RequestMapping(method = RequestMethod.DELETE, value = "poistaviite/{referenceId}")
+    public String removeReference(@PathVariable Integer referenceId) {
+        //koodia tänne, toiminnallisuudesta riippuen
+        return "redirect:/alkunakyma";
     }
 
     @RequestMapping(method= RequestMethod.GET, value="bibfile.tex")

@@ -17,10 +17,9 @@
         <h2>Järjestelmässä olevat viitteet</h2>
 
         <c:forEach var="reference" items="${references}">
-            <form:form action="${pageContext.request.contextPath}/viite/${reference.id}" method="DELETE">
-                <li>${reference.string}<br/>
-                    <input type="submit" value="Poista"><br/>
-            </form:form>
+                <li>
+					${reference.string} (<a href="poista/${reference.id}">${reference.string}</a>)<br/>
+				</li>
 
         </c:forEach> 
 

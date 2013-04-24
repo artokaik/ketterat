@@ -9,8 +9,6 @@ scenario "If user posts a reference, that one can be found from the list", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'reference is saved', {
-        element = driver.findElement(By.name("reftype"));
-        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Kaikkonen, Arto");
         element = driver.findElement(By.name("title"));
@@ -44,8 +42,7 @@ scenario "If user posts two references, the first one can be found from the list
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'two references are saved', {
-        element = driver.findElement(By.name("reftype"));
-        element.sendKeys("article");
+
         element = driver.findElement(By.name("author"));
         element.sendKeys("Täti Testaaja");
         element = driver.findElement(By.name("title"));
@@ -55,8 +52,6 @@ scenario "If user posts two references, the first one can be found from the list
         element = driver.findElement(By.name("viite"));
         element.submit();
 
-        element = driver.findElement(By.name("reftype"));
-        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));
@@ -77,8 +72,6 @@ scenario "If user posts two references, the second one can be found from the lis
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'two references are saved', {
-        element = driver.findElement(By.name("reftype"));
-        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Kalle kirjoittaja");
         element = driver.findElement(By.name("title"));
@@ -89,8 +82,6 @@ scenario "If user posts two references, the second one can be found from the lis
         element.submit();
 
 
-        element = driver.findElement(By.name("reftype"));
-        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Joku Jaarittelija");
         element = driver.findElement(By.name("title"));

@@ -33,9 +33,9 @@
 
 
 
-        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+        <form action="${pageContext.request.contextPath}/viite" method="POST">
             Viitetyyppi: <select name="reftype">
-                <option value="article">Artikkeli/Article</option>
+                <option value="article" selected="selected">Artikkeli/Article</option>
                 <option value="inproceedings">Inproceedings</option>
                 <option value="book">Kirja/Book</option>
             </select><br/>

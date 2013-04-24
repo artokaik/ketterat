@@ -49,10 +49,10 @@ public class AllController {
         return "bibtex";
     }
     
-    @RequestMapping(method = RequestMethod.DELETE, value = "viite/{referenceId}")
-    public String removeReference(@PathVariable Long referenceId) {
-        System.out.println("MENEE METODIIN" + referenceId);
-        refService.delete(referenceId);
+    @RequestMapping(value = "poista/{id}")
+    public String removeReference(@PathVariable Long id) {
+        System.out.println("MENEE METODIIN" + id);
+        refService.delete(id);
         return "redirect:/alkunakyma";
     }
 
@@ -85,5 +85,6 @@ public class AllController {
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }
+    
 
 }

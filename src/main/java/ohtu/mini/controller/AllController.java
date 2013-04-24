@@ -16,6 +16,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,10 +83,12 @@ public class AllController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "viite")
-    public String addReference(@Valid @ModelAttribute Reference reference) {
+    public String addReference(@Valid @ModelAttribute Reference reference,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "alkunakyma";
+        }
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }
-    
-
 }

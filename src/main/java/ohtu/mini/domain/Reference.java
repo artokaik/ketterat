@@ -187,6 +187,7 @@ public class Reference implements Serializable {
         this.author = author;
     }
 
+<<<<<<< HEAD
     public String getString() {
         return string;
     }
@@ -204,28 +205,12 @@ public class Reference implements Serializable {
             sb.append("@inproceedings{");
         } else {
             sb.append("@article{");
+=======
+    private String stringToBib(String s) {
+        if(s==null || s.isEmpty()){
+            return "";
+>>>>>>> 154d2a51a2aaca44035e85e0fb3cf14193be24a0
         }
-        sb.append(this.getAbbreviation()).append(",\n");
-
-        sb.append("    author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
-        sb.append("    title").append(" = {").append(stringToBib(this.getTitle())).append("},\n");
-        sb.append("    journal").append(" = {").append(stringToBib(this.getJournal())).append("},\n");
-        sb.append("    volume").append(" = {").append(this.getVolume()).append("},\n");
-        sb.append("    number").append(" = {").append(this.getNumber()).append("},\n");
-        sb.append("    year = {").append(this.getYear()).append("},\n");
-        sb.append("    pages = {").append(this.getPages()).append("},\n");
-        sb.append("    publisher = {").append(stringToBib(this.getPublisher())).append("},\n");
-        sb.append("    address = {").append(stringToBib(this.getAddress())).append("},\n");
-        sb.append("    month = {").append(this.getMonth()).append("},\n");
-        sb.append("    booktitle = {").append(this.getBookTitle()).append("},\n");
-        sb.append("    editor = {").append(stringToBib(this.getEditor())).append("},\n");
-        sb.append("    organization = {").append(stringToBib(this.getOrganization())).append("},\n");
-
-        sb.append("}");
-        return sb.toString();
-    }
-
-    public String stringToBib(String s) {
         String output = "";
         for (char ch : s.toCharArray()) {
             output = output + normalize(Character.toString(ch));
@@ -285,4 +270,50 @@ public class Reference implements Serializable {
         return palautus;
 
     }
+    
+        public String toBibtex() {
+        createAccents();
+        StringBuilder sb = new StringBuilder();
+        sb.append("@" + reftype + "{");
+        sb.append(this.getAbbreviation()).append(",\n");
+        sb.append(bibtexLine("author",stringToBib(this.getAuthor()),true));
+        sb.append(bibtexLine("title",stringToBib(this.getTitle()),false));
+        sb.append(bibtexLine("journal",stringToBib(this.getJournal()),false));
+        sb.append(bibtexLine("volume",this.getVolume(),false));
+        sb.append(bibtexLine("number",this.getNumber(),false));
+        sb.append(bibtexLine("year",this.getYear(),false));
+        sb.append(bibtexLine("pages",stringToBib(this.getPages()),false));
+        sb.append(bibtexLine("publisher",stringToBib(this.getPublisher()),false));
+        sb.append(bibtexLine("address",stringToBib(this.getAddress()),false));
+        sb.append(bibtexLine("month",stringToBib(this.getMonth()),false));
+        sb.append(bibtexLine("booktitle",stringToBib(this.getBookTitle()),false));
+        sb.append(bibtexLine("editor",stringToBib(this.getEditor()),false));
+        sb.append(bibtexLine("organization",stringToBib(this.getOrganization()),false));
+        sb.append("\n}");
+        
+
+        return sb.toString();
+    }
+        private String bibtexLine(String line, int value, boolean firstLine){
+            if(value == 0){
+                return "";
+            }
+            return bibtexLine(line,value+"",firstLine);
+        }
+        
+        private String bibtexLine(String line, String value, boolean firstLine){
+            StringBuilder sb = new StringBuilder();
+            if (value == null || value.isEmpty()){
+                return "";
+            } else {
+                if(!firstLine){
+                    sb.append(",\n");
+                }
+                sb.append("    " + line + " = {" + value + "}");
+                return sb.toString();
+                        
+            }
+        }
+    
+    
 }

@@ -46,8 +46,18 @@ public class Reference implements Serializable {
     private String author;
     @Column(name = "editor")
     private String editor;
+
+    public String getString() {
+        return string;
+    }
+
+    public void setString(String string) {
+        this.string = string;
+    }
     @Column(name = "organization")
     private String organization;
+    @Column(name = "string")
+    private String string = "";
 
     public String getReftype() {
         return reftype;
@@ -263,6 +273,7 @@ public class Reference implements Serializable {
                     + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume()
                     + " (" + getNumber() + "): " + getPages();
         }
+        this.string = palautus;
         return palautus;
 
     }

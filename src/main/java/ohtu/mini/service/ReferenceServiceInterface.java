@@ -11,4 +11,6 @@ public interface ReferenceServiceInterface {
     public void add(Reference reference);
 
     public void generateBibtex(String file, List<Reference> references) throws IOException;
+
+    public void delete(Long referenceId);
 }

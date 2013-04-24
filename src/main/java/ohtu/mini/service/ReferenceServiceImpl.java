@@ -73,4 +73,9 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
         writer.write(sb.toString());
         writer.close();
     }
+
+    @Override
+    public void delete(Long referenceId) {
+        referenceRepository.delete(referenceId);
+    }
 }

@@ -29,11 +29,12 @@ public class AllController {
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String getNakyma(Model model) {
         List<Reference> references = refService.list();
-        ArrayList<String> refStrings = new ArrayList<String>();
+        ArrayList<Reference> refs = new ArrayList<Reference>();
         for (Reference reference : references) {
-            refStrings.add(reference.toString());
+            reference.toString();
+            refs.add(reference);
         }
-        model.addAttribute("references", refStrings);
+        model.addAttribute("references", refs);
         return "alkunakyma";
     }
 
@@ -48,9 +49,10 @@ public class AllController {
         return "bibtex";
     }
     
-    @RequestMapping(method = RequestMethod.DELETE, value = "poistaviite/{referenceId}")
-    public String removeReference(@PathVariable Integer referenceId) {
-        //koodia tänne, toiminnallisuudesta riippuen
+    @RequestMapping(method = RequestMethod.DELETE, value = "viite/{referenceId}")
+    public String removeReference(@PathVariable Long referenceId) {
+        System.out.println("MENEE METODIIN" + referenceId);
+        refService.delete(referenceId);
         return "redirect:/alkunakyma";
     }
 
@@ -78,7 +80,7 @@ public class AllController {
         return "redirect:/alkunakyma";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "lisaaviite")
+    @RequestMapping(method = RequestMethod.POST, value = "viite")
     public String addReference(@ModelAttribute Reference reference) {
         this.refService.add(reference);
         return "redirect:/alkunakyma";

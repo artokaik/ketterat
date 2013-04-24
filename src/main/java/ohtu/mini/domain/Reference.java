@@ -12,24 +12,24 @@ import java.util.HashMap;
 
 @Entity
 public class Reference implements Serializable {
-    
-    private HashMap<Integer,String> accents = new HashMap<Integer,String>();
 
+    private HashMap<Integer, String> accents = new HashMap<Integer, String>();
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
-//	@Column(name="title")
-//	@OneToOne
-//	private RefType refType;
+    @Column(name = "reftype")
+    private String reftype;
     @Column(name = "abbreviation")
     private String abbreviation;
     @Column(name = "title")
     private String title;
     @Column(name = "publish_year")
     private int year;
-//    @Column(name = "book_title")
-//    private String bookTitle;
+    @Column(name = "month")
+    private String month;
+    @Column(name = "book_title")
+    private String bookTitle;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "pages")
@@ -44,6 +44,50 @@ public class Reference implements Serializable {
     private int number;
     @Column(name = "author")
     private String author;
+    @Column(name = "editor")
+    private String editor;
+    @Column(name = "organization")
+    private String organization;
+
+    public String getReftype() {
+        return reftype;
+    }
+
+    public void setReftype(String reftype) {
+        this.reftype = reftype;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
 
     public Long getId() {
         return id;
@@ -61,13 +105,6 @@ public class Reference implements Serializable {
         this.abbreviation = abbreviation;
     }
 
-//	public RefType getRefType() {
-//		return refType;
-//	}
-//
-//	public void setRefType(RefType refType) {
-//		this.refType = refType;
-//	}
     public String getTitle() {
         return title;
     }
@@ -84,13 +121,6 @@ public class Reference implements Serializable {
         this.year = year;
     }
 
-//    public String getBookTitle() {
-//        return bookTitle;
-//    }
-//
-//    public void setBookTitle(String bookTitle) {
-//        this.bookTitle = bookTitle;
-//    }
     public String getPublisher() {
         return publisher;
     }
@@ -152,7 +182,7 @@ public class Reference implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("@article{");
         sb.append(this.getAbbreviation()).append(",\n");
-        
+
         sb.append("    author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
         sb.append("    title").append(" = {").append(stringToBib(this.getTitle())).append("},\n");
         sb.append("    journal").append(" = {").append(stringToBib(this.getJournal())).append("},\n");
@@ -166,46 +196,56 @@ public class Reference implements Serializable {
         sb.append("}");
         return sb.toString();
     }
-    
+
     public String stringToBib(String s) {
-    	String output = "";
-    	for (char ch: s.toCharArray()) {
-            output = output+normalize(Character.toString(ch));
-    	}
-           return output;	
+        String output = "";
+        for (char ch : s.toCharArray()) {
+            output = output + normalize(Character.toString(ch));
+        }
+        return output;
     }
-    
+
     private String normalize(String s) {
-        if (s.equals("{") || s.equals("}")|| s.equals("$"))
-            return "\\"+s;
-    	if (Normalizer.isNormalized(s, Normalizer.Form.NFD)){
-    		return s;
-    	}
-    	s = (Normalizer.normalize(s, Normalizer.Form.NFD));
-    	if (s.charAt(1) == 778)
-    		return "\\"+s.charAt(0)+s.charAt(0);
-        if (accents.get(0+s.charAt(1)) == null)
-                return Character.toString(s.charAt(0));
-    	return "\\"+accents.get(0+s.charAt(1))+"{"+s.charAt(0)+"}";	
+        if (s.equals("{") || s.equals("}") || s.equals("$")) {
+            return "\\" + s;
+        }
+        if (Normalizer.isNormalized(s, Normalizer.Form.NFD)) {
+            return s;
+        }
+        s = (Normalizer.normalize(s, Normalizer.Form.NFD));
+        if (s.charAt(1) == 778) {
+            return "\\" + s.charAt(0) + s.charAt(0);
+        }
+        if (accents.get(0 + s.charAt(1)) == null) {
+            return Character.toString(s.charAt(0));
+        }
+        return "\\" + accents.get(0 + s.charAt(1)) + "{" + s.charAt(0) + "}";
     }
-    
+
     private void createAccents() {
-    	accents.put(768,"`"); // `
-    	accents.put(769,"´"); // ´
-    	accents.put(770,"^"); // ^
-    	accents.put(771,"~"); // ~
-    	accents.put(776,"\""); // ¨
-    	accents.put(780,"v"); // 
-        accents.put(774,"u"); // 
-        accents.put(772,"="); // 
-        accents.put(807,"c"); // 
-        accents.put(808,"c"); // 
+        accents.put(768, "`"); // `
+        accents.put(769, "´"); // ´
+        accents.put(770, "^"); // ^
+        accents.put(771, "~"); // ~
+        accents.put(776, "\""); // ¨
+        accents.put(780, "v"); // 
+        accents.put(774, "u"); // 
+        accents.put(772, "="); // 
+        accents.put(807, "c"); // 
+        accents.put(808, "c"); // 
     }
 
     @Override
     public String toString() {
-        String string = getAuthor() + " (" + getYear() + "). " + getTitle() + ". " + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume() + " (" + getNumber() + "): " + getPages();
-        return string;
-    }
+        String palautus = "";
+        if (reftype.toLowerCase().charAt(0) == 'b') {
+            palautus = "Tää on kirja";
+        } else if (reftype.toLowerCase().charAt(0) == 'i') {
+            palautus = "Tää on pöytäkirja";
+        } else {
+            palautus = getAuthor() + " (" + getYear() + "). " + getTitle() + ". " + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume() + " (" + getNumber() + "): " + getPages();
+        }
+        return palautus;
 
+    }
 }

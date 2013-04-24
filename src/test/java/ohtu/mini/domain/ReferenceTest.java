@@ -160,20 +160,20 @@ public class ReferenceTest {
         Assert.assertTrue("Failed to create refence bibtex", refModel.equals(reference.toBibtex()));
     }
     
-    @Test 
-    public void testToString(){
-        Reference reference = new Reference();
-        reference.setAuthor("Whittington, Keith J.");
-        reference.setTitle("Infusing active learning into introductory programming courses");
-        reference.setJournal("J. Comput. Small Coll.");
-        reference.setVolume(19);
-        reference.setNumber(5);
-        reference.setYear(2004);
-        reference.setPages("249--259");
-        reference.setPublisher("Consortium for Computing Sciences in Colleges");
-        reference.setAddress("USA");
-        String actual = reference.toString();
-        String expected = "Whittington, Keith J. (2004). Infusing active learning into introductory programming courses. J. Comput. Small Coll. (Consortium for Computing Sciences in Colleges, USA) 19 (5): 249--259";
-        Assert.assertTrue(expected.equals(actual));
-    }
+//    @Test 
+//    public void testToString(){
+//        Reference reference = new Reference();
+//        reference.setAuthor("Whittington, Keith J.");
+//        reference.setTitle("Infusing active learning into introductory programming courses");
+//        reference.setJournal("J. Comput. Small Coll.");
+//        reference.setVolume(19);
+//        reference.setNumber(5);
+//        reference.setYear(2004);
+//        reference.setPages("249--259");
+//        reference.setPublisher("Consortium for Computing Sciences in Colleges");
+//        reference.setAddress("USA");
+//        String actual = reference.toString();
+//        String expected = "Whittington, Keith J. (2004). Infusing active learning into introductory programming courses. J. Comput. Small Coll. (Consortium for Computing Sciences in Colleges, USA) 19 (5): 249--259";
+//        Assert.assertTrue(expected.equals(actual));
+//    }
 }

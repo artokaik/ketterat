@@ -46,7 +46,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("deb04", reference.getAbbreviation());
+        Assert.assertEquals("d04", reference.getAbbreviation());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("ham05", reference.getAbbreviation());
+        Assert.assertEquals("h05", reference.getAbbreviation());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("whi04", reference.getAbbreviation());
+        Assert.assertEquals("w04", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -91,7 +91,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("whi04a", reference.getAbbreviation());
+        Assert.assertEquals("w04a", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -104,7 +104,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("whi04b", reference.getAbbreviation());
+        Assert.assertEquals("w04b", reference.getAbbreviation());
     }
 
 //    @Test
@@ -125,7 +125,7 @@ public class ReferenceServiceImplTest {
         List<Reference> references = new ArrayList<Reference>();
         Reference reference = new Reference();
         reference.setId(1);
-        reference.setAbbreviation("whi04");
+        reference.setAbbreviation("w04");
         reference.setAuthor("Whittington, Keith J.");
         reference.setTitle("Infusing active learning into introductory programming courses");
         reference.setJournal("J. Comput. Small Coll.");
@@ -139,7 +139,7 @@ public class ReferenceServiceImplTest {
 
         reference = new Reference();
         reference.setId(2);
-        reference.setAbbreviation("kai13");
+        reference.setAbbreviation("k13");
         reference.setAuthor("Kaikkonen, Arto");
         reference.setTitle("otsikko");
         reference.setJournal("lehti");
@@ -154,7 +154,7 @@ public class ReferenceServiceImplTest {
     }
 
     private String addedReferencesToString() {
-        String bibtex = "@article{whi04,\n"
+        String bibtex = "@article{w04,\n"
                 + "    author = {Whittington, Keith J.},\n"
                 + "    title = {Infusing active learning into introductory programming courses},\n"
                 + "    journal = {J. Comput. Small Coll.},\n"
@@ -166,7 +166,7 @@ public class ReferenceServiceImplTest {
                 + "    address = {USA},\n"
                 + "}"
                 + "\n"
-                + "@article{kai13,\n"
+                + "@article{k13,\n"
                 + "    author = {Kaikkonen, Arto},\n"
                 + "    title = {otsikko},\n"
                 + "    journal = {lehti},\n"

@@ -157,18 +157,14 @@ public class ReferenceTest {
                 + "    year = {2004},\n"
                 + "    pages = {249--259},\n"
                 + "    publisher = {Consortium for Computing Sciences in Colleges},\n"
-                + "    address = {USA},\n"
-                + "    month = {},\n"
-                + "    booktitle = {},\n"
-                + "    editor = {},\n"
-                + "    organization = {},\n"
+                + "    address = {USA}\n"
                 + "}";
 
 //        System.out.println(refModel +"\n-------------\n" + reference.toBibtex());
 //        System.out.println("Tulostus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.println(refModel);
 //        System.out.println(reference.toBibtex());
-        Assert.assertTrue("Failed to create refence bibtex", refModel.equals(reference.toBibtex()));
+        Assert.assertEquals(refModel, reference.toBibtex());
     }
     
     @Test 

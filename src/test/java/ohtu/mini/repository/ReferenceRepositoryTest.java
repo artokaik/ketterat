@@ -1,7 +1,6 @@
 package ohtu.mini.repository;
 
 import ohtu.mini.domain.Reference;
-import ohtu.mini.domain.SampleObject;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;

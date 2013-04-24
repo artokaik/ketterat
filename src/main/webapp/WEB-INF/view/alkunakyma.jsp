@@ -52,33 +52,6 @@
         </form>
 
 
-
-        <!--        <h2>Lisää uusi konferenssiartikkeliviite</h2>
-        
-                <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-                    Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
-                    Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
-                    Artikkelin nimi/Title: <input type="text" name="title" size="50" value=""><br/>
-                    Pöytäkirjan nimi/Booktitle: <input type="text" name="bookTitle" value=""><br/>
-                    Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
-                    Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
-                    Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
-                    <input type="submit" value="Lisää" name="viite"><br/>        
-                </form>
-                    
-                <h2>Lisää uusi kirjaviite</h2>
-        
-                <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-                    Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
-                    Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
-                    Kirjan nimi/Title: <input type="text" name="title" size="50" value=""><br/>
-                    Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
-                    Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
-                    Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
-                    <input type="submit" value="Lisää" name="viite"><br/>        
-                </form>-->
-
-
     </body>
 
 </html>

@@ -180,7 +180,13 @@ public class Reference implements Serializable {
     public String toBibtex() {
         createAccents();
         StringBuilder sb = new StringBuilder();
-        sb.append("@article{");
+        if (reftype.toLowerCase().charAt(0) == 'b') {
+            sb.append("@book{");
+        } else if (reftype.toLowerCase().charAt(0) == 'i') {
+            sb.append("@inproceedings{");
+        } else {
+            sb.append("@article{");
+        }
         sb.append(this.getAbbreviation()).append(",\n");
 
         sb.append("    author").append(" = {").append(stringToBib(this.getAuthor())).append("},\n");
@@ -192,6 +198,10 @@ public class Reference implements Serializable {
         sb.append("    pages = {").append(this.getPages()).append("},\n");
         sb.append("    publisher = {").append(stringToBib(this.getPublisher())).append("},\n");
         sb.append("    address = {").append(stringToBib(this.getAddress())).append("},\n");
+        sb.append("    month = {").append(this.getMonth()).append("},\n");
+        sb.append("    booktitle = {").append(this.getBookTitle()).append("},\n");
+        sb.append("    editor = {").append(stringToBib(this.getEditor())).append("},\n");
+        sb.append("    organization = {").append(stringToBib(this.getOrganization())).append("},\n");
 
         sb.append("}");
         return sb.toString();
@@ -243,11 +253,11 @@ public class Reference implements Serializable {
             if (getAuthor().equals("")) {
                 tekija = getEditor();
             }
-            palautus = tekija + ": " + getTitle() + ". " + getPublisher() + 
-                    ", " + getAddress() + ", " + getYear() + ".";
+            palautus = tekija + ": " + getTitle() + ". " + getPublisher()
+                    + ", " + getAddress() + ", " + getYear() + ".";
         } else if (reftype.toLowerCase().charAt(0) == 'i') {
             palautus = getAuthor() + ", " + getTitle() + ": "
-                    + getBookTitle() + ", " + getPages() + ". " + getOrganization() + ", " + getMonth() + ", " +  getYear() + ". ";
+                    + getBookTitle() + ", " + getPages() + ". " + getOrganization() + ", " + getMonth() + ", " + getYear() + ". ";
         } else {
             palautus = getAuthor() + " (" + getYear() + "). " + getTitle() + ". "
                     + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume()

@@ -34,15 +34,15 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
 
     private void generateAbbreviation(Reference reference) {
 //        if (reference.getAbbreviation() == null || reference.getAbbreviation().isEmpty()) {
-        String first3Letters = abbName(reference.getAuthor());
+        String firstletter = abbName(reference.getAuthor());
         String year = reference.getYear() + "";
         year = year.substring(2, 4);
-        String abbreviation = first3Letters + year;
+        String abbreviation = firstletter + year;
 
         char[] extraLetter = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         int i = 0;
         while (referenceRepository.findByAbbreviation(abbreviation) != null) {
-            abbreviation = abbreviation.substring(0, 5) + extraLetter[i];
+            abbreviation = abbreviation.substring(0, 3) + extraLetter[i];
             i++;
         }
         reference.setAbbreviation(abbreviation);
@@ -59,7 +59,7 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
                 abb += s.charAt(i);
             }
         }
-        return abb.substring(0,Math.min(abb.length(),3));
+        return abb.substring(0,Math.min(abb.length(),1));
     }
 
     @Override

@@ -239,11 +239,19 @@ public class Reference implements Serializable {
     public String toString() {
         String palautus = "";
         if (reftype.toLowerCase().charAt(0) == 'b') {
-            palautus = "Tää on kirja";
+            String tekija = getAuthor();
+            if (getAuthor().equals("")) {
+                tekija = getEditor();
+            }
+            palautus = tekija + ": " + getTitle() + ". " + getPublisher() + 
+                    ", " + getAddress() + ", " + getYear() + ".";
         } else if (reftype.toLowerCase().charAt(0) == 'i') {
-            palautus = "Tää on pöytäkirja";
+            palautus = getAuthor() + ", " + getTitle() + ": "
+                    + getBookTitle() + ", " + getPages() + ". " + getOrganization() + ", " + getMonth() + ", " +  getYear() + ". ";
         } else {
-            palautus = getAuthor() + " (" + getYear() + "). " + getTitle() + ". " + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume() + " (" + getNumber() + "): " + getPages();
+            palautus = getAuthor() + " (" + getYear() + "). " + getTitle() + ". "
+                    + getJournal() + " (" + getPublisher() + ", " + getAddress() + ") " + getVolume()
+                    + " (" + getNumber() + "): " + getPages();
         }
         return palautus;
 

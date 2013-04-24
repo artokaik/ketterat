@@ -59,7 +59,7 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
                 abb += s.charAt(i);
             }
         }
-        return abb.substring(0,3);
+        return abb.substring(0,Math.min(abb.length(),3));
     }
 
     @Override

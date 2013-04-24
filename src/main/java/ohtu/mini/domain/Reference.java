@@ -1,14 +1,16 @@
 package ohtu.mini.domain;
 
 import java.io.Serializable;
+import java.text.Normalizer;
+import java.util.HashMap;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import java.text.Normalizer;
-import java.util.HashMap;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.*;
 
 @Entity
 public class Reference implements Serializable {
@@ -22,8 +24,10 @@ public class Reference implements Serializable {
     private String reftype;
     @Column(name = "abbreviation")
     private String abbreviation;
+    @Length(min = 5)
     @Column(name = "title")
     private String title;
+    @Digits(integer = 4, fraction = 0)
     @Column(name = "publish_year")
     private int year;
     @Column(name = "month")
@@ -32,28 +36,24 @@ public class Reference implements Serializable {
     private String bookTitle;
     @Column(name = "publisher")
     private String publisher;
+    @Pattern(regexp = "flag=[1-99999]-[1-99999]|[1-99999]--[1-99999]|[1-99999] - [1-99999]|[1-99999] -- [1-99999]")
     @Column(name = "pages")
     private String pages;
     @Column(name = "address")
     private String address;
     @Column(name = "journal")
     private String journal;
+    @Digits(integer = 4, fraction = 0)
     @Column(name = "volume")
     private int volume;
+    @Digits(integer = 4, fraction = 0)
     @Column(name = "number")
     private int number;
+    @NotBlank
     @Column(name = "author")
     private String author;
     @Column(name = "editor")
     private String editor;
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
-    }
     @Column(name = "organization")
     private String organization;
     @Column(name = "string")
@@ -185,6 +185,14 @@ public class Reference implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getString() {
+        return string;
+    }
+
+    public void setString(String string) {
+        this.string = string;
     }
 
     public String toBibtex() {

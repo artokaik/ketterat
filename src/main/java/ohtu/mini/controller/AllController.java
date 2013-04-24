@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import ohtu.mini.domain.Reference;
 import ohtu.mini.service.ReferenceServiceInterface;
 import org.apache.commons.io.IOUtils;
@@ -81,7 +82,7 @@ public class AllController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "viite")
-    public String addReference(@ModelAttribute Reference reference) {
+    public String addReference(@Valid @ModelAttribute Reference reference) {
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }

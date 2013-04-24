@@ -7,6 +7,8 @@ scenario "user can create a bibtex if there is at least one reference in the sys
     given 'a reference is entered to the system', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma"); 
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
@@ -35,8 +37,7 @@ scenario "user can create a bibtex if there is at least one reference in the sys
         element.click();
     }     
     then 'the reference is printed to the screen in bibtex-format', {
-        driver.getPageSource().contains("@article{art89,").shouldBe true
-        driver.getPageSource().contains("author = {Arto Koo},").shouldBe true
+        driver.getPageSource().contains("@article{a89,").shouldBe true
         driver.getPageSource().contains("publisher = {WSOY},").shouldBe true
     }
 }

@@ -9,6 +9,8 @@ scenario "user can post an article reference if all the fields are filled", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'all the information is entered', {
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
@@ -42,6 +44,8 @@ scenario "user can post article even if some fields are empty", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'some information is entered but some fields are empty', {
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));

@@ -9,8 +9,10 @@ scenario "If user posts a reference, that one can be found from the list", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'reference is saved', {
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
-        element.sendKeys("Arto Koo");
+        element.sendKeys("Kaikkonen, Arto");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Hemmetin hyvä artikkeli");
         element = driver.findElement(By.name("journal"));
@@ -32,7 +34,7 @@ scenario "If user posts a reference, that one can be found from the list", {
         element.submit();
     }     
     then 'the reference can be found from the list of references', {
-        driver.getPageSource().contains("Arto Koo").shouldBe true
+        driver.getPageSource().contains("Kaikkonen, Arto").shouldBe true
     }
 }
 
@@ -42,6 +44,8 @@ scenario "If user posts two references, the first one can be found from the list
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'two references are saved', {
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Täti Testaaja");
         element = driver.findElement(By.name("title"));
@@ -51,6 +55,8 @@ scenario "If user posts two references, the first one can be found from the list
         element = driver.findElement(By.name("viite"));
         element.submit();
 
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Kaikkonen");
         element = driver.findElement(By.name("title"));
@@ -71,6 +77,8 @@ scenario "If user posts two references, the second one can be found from the lis
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'two references are saved', {
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Kalle kirjoittaja");
         element = driver.findElement(By.name("title"));
@@ -81,6 +89,8 @@ scenario "If user posts two references, the second one can be found from the lis
         element.submit();
 
 
+        element = driver.findElement(By.name("reftype"));
+        element.sendKeys("article");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Joku Jaarittelija");
         element = driver.findElement(By.name("title"));

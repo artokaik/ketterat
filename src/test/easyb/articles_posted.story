@@ -9,8 +9,6 @@ scenario "user can post an article reference if all the fields are filled", {
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
     when 'all the information is entered', {
-        element = driver.findElement(By.name("abbreviation"));
-        element.sendKeys("ako92");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));

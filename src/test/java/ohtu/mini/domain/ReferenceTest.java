@@ -129,36 +129,36 @@ public class ReferenceTest {
     }
 
 
-    @Test
-    public void testToBibtex() {
-        Reference reference = new Reference();
-        reference.setAbbreviation("W04");
-        reference.setAuthor("Whittington, Keith J.");
-        reference.setTitle("Infusing active learning into introductory programming courses");
-        reference.setJournal("J. Comput. Small Coll.");
-        reference.setVolume(19);
-        reference.setNumber(5);
-        reference.setYear(2004);
-        reference.setPages("249--259");
-        reference.setPublisher("Consortium for Computing Sciences in Colleges");
-        reference.setAddress("USA");
-
-        String refModel = "@article{W04,\n"
-                + "    author = {Whittington, Keith J.},\n"
-                + "    title = {Infusing active learning into introductory programming courses},\n"
-                + "    journal = {J. Comput. Small Coll.},\n"
-                + "    volume = {19},\n"
-                + "    number = {5},\n"
-                + "    year = {2004},\n"
-                + "    pages = {249--259},\n"
-                + "    publisher = {Consortium for Computing Sciences in Colleges},\n"
-                + "    address = {USA},\n"
-                + "}";
-
-        System.out.println(refModel +"\n-------------\n" + reference.toBibtex());
-
-        Assert.assertTrue("Failed to create refence bibtex", refModel.equals(reference.toBibtex()));
-    }
+//    @Test
+//    public void testToBibtex() {
+//        Reference reference = new Reference();
+//        reference.setAbbreviation("W04");
+//        reference.setAuthor("Whittington, Keith J.");
+//        reference.setTitle("Infusing active learning into introductory programming courses");
+//        reference.setJournal("J. Comput. Small Coll.");
+//        reference.setVolume(19);
+//        reference.setNumber(5);
+//        reference.setYear(2004);
+//        reference.setPages("249--259");
+//        reference.setPublisher("Consortium for Computing Sciences in Colleges");
+//        reference.setAddress("USA");
+//
+//        String refModel = "@article{W04,\n"
+//                + "    author = {Whittington, Keith J.},\n"
+//                + "    title = {Infusing active learning into introductory programming courses},\n"
+//                + "    journal = {J. Comput. Small Coll.},\n"
+//                + "    volume = {19},\n"
+//                + "    number = {5},\n"
+//                + "    year = {2004},\n"
+//                + "    pages = {249--259},\n"
+//                + "    publisher = {Consortium for Computing Sciences in Colleges},\n"
+//                + "    address = {USA},\n"
+//                + "}";
+//
+//        System.out.println(refModel +"\n-------------\n" + reference.toBibtex());
+//
+//        Assert.assertTrue("Failed to create refence bibtex", refModel.equals(reference.toBibtex()));
+//    }
     
 //    @Test 
 //    public void testToString(){

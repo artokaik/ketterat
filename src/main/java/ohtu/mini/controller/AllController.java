@@ -21,15 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController {
+public class AllController {
 
     @Autowired
     ReferenceServiceInterface refService;
-
-//    @RequestMapping(value = "/home")
-//    public String home() {
-//        return "home";
-//    }
+    
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String getNakyma(Model model) {
         List<Reference> references = refService.list();
@@ -59,7 +55,6 @@ public class HomeController {
     }
 
     @RequestMapping(method= RequestMethod.GET, value="bibfile.tex")
-//    public void getBibFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
     public void getBibFile(HttpServletResponse response) {
         String filename = "refFile.txt";
         try {
@@ -74,7 +69,7 @@ public class HomeController {
             IOUtils.copy(fis, response.getOutputStream());
             response.flushBuffer();
         } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AllController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -88,24 +83,5 @@ public class HomeController {
         this.refService.add(reference);
         return "redirect:/alkunakyma";
     }
-    
-    
-//    @RequestMapping(method = RequestMethod.POST, value = "viitelisatty")
-//    public String addReferenceViiteLisatty(@ModelAttribute Reference reference) {
-//        this.refService.add(reference);
-//        return "redirect:/viitelisatty";
-//    }
-    
-//    @RequestMapping(method = RequestMethod.GET, value = "viitelisatty")
-//    public String viiteLisattyGet() {
-//        return "viitelisatty";
-//    }
-    
-//    @RequestMapping(method = RequestMethod.GET, value = "viitelisatty")
-//    public String viiteLisattyGet(Model model) {
-//        model.addAttribute("references", refService.list());
-//        return "viitelisatty";
-//    }
-
 
 }

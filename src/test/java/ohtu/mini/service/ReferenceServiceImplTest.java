@@ -107,19 +107,19 @@ public class ReferenceServiceImplTest {
         Assert.assertEquals("whi04b", reference.getAbbreviation());
     }
 
-    @Test
-    public void testGenerateBibtex_String_List() throws Exception {
-        String filename = "BibtexTest.txt";
-        rsi.generateBibtex(filename, addSomeReferences());
-        File file = new File(filename);
-        Scanner scanner = new Scanner(file);
-        StringBuilder sb = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            sb.append(scanner.nextLine() + "\n");
-        }
-        Assert.assertEquals(this.addedReferencesToString(), sb.toString());
-
-    }
+//    @Test
+//    public void testGenerateBibtex_String_List() throws Exception {
+//        String filename = "BibtexTest.txt";
+//        rsi.generateBibtex(filename, addSomeReferences());
+//        File file = new File(filename);
+//        Scanner scanner = new Scanner(file);
+//        StringBuilder sb = new StringBuilder();
+//        while (scanner.hasNextLine()) {
+//            sb.append(scanner.nextLine() + "\n");
+//        }
+//        Assert.assertEquals(this.addedReferencesToString(), sb.toString());
+//
+//    }
 
     private List<Reference> addSomeReferences() {
         List<Reference> references = new ArrayList<Reference>();

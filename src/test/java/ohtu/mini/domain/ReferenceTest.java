@@ -165,9 +165,9 @@ public class ReferenceTest {
                 + "}";
 
 //        System.out.println(refModel +"\n-------------\n" + reference.toBibtex());
-        System.out.println("Tulostus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(refModel);
-        System.out.println(reference.toBibtex());
+//        System.out.println("Tulostus !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println(refModel);
+//        System.out.println(reference.toBibtex());
         Assert.assertTrue("Failed to create refence bibtex", refModel.equals(reference.toBibtex()));
     }
     

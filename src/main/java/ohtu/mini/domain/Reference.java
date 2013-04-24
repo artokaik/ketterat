@@ -24,7 +24,7 @@ public class Reference implements Serializable {
     private String reftype;
     @Column(name = "abbreviation")
     private String abbreviation;
-    @Length(min = 5)
+    @NotBlank
     @Column(name = "title")
     private String title;
     @Digits(integer = 4, fraction = 0)
@@ -36,7 +36,12 @@ public class Reference implements Serializable {
     private String bookTitle;
     @Column(name = "publisher")
     private String publisher;
-//    @Pattern(regexp = "[1-99999](-|--| - | -- )[1-99999]")
+    @Column(name = "author")
+    private String author;
+    @Column(name = "editor")
+    private String editor;
+    @Column(name = "organization")
+    private String organization;
     @Column(name = "pages")
     private String pages;
     @Column(name = "address")
@@ -49,13 +54,6 @@ public class Reference implements Serializable {
     @Digits(integer = 4, fraction = 0)
     @Column(name = "number")
     private int number;
-    @NotBlank
-    @Column(name = "author")
-    private String author;
-    @Column(name = "editor")
-    private String editor;
-    @Column(name = "organization")
-    private String organization;
     @Column(name = "string")
     private String string = "";
 

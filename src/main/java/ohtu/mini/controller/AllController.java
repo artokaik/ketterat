@@ -27,7 +27,7 @@ public class AllController {
 
     @Autowired
     ReferenceServiceInterface refService;
-    
+
     @RequestMapping(method = RequestMethod.GET, value = "alkunakyma")
     public String getNakyma(Model model) {
         List<Reference> references = refService.list();
@@ -50,7 +50,7 @@ public class AllController {
         model.addAttribute("texes", Texes);
         return "bibtex";
     }
-    
+
     @RequestMapping(value = "poista/{id}")
     public String removeReference(@PathVariable Long id) {
         System.out.println("MENEE METODIIN" + id);
@@ -58,7 +58,7 @@ public class AllController {
         return "redirect:/alkunakyma";
     }
 
-    @RequestMapping(method= RequestMethod.GET, value="bibfile.tex")
+    @RequestMapping(method = RequestMethod.GET, value = "bibfile.tex")
     public void getBibFile(HttpServletResponse response) {
         String filename = "refFile.txt";
         try {

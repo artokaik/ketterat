@@ -36,6 +36,17 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
 //        if (reference.getAbbreviation() == null || reference.getAbbreviation().isEmpty()) {
         String firstletter = abbName(reference.getAuthor());
         String year = reference.getYear() + "";
+        if (year.length() < 4) {
+            if (year.length() == 3) {
+                year = " " + year;
+            }
+            if (year.length() == 2) {
+                year = "  " + year;
+            }
+            if (year.length() == 1) {
+                year = "   " + year;
+            }
+        }
         year = year.substring(2, 4);
         String abbreviation = firstletter + year;
 
@@ -49,7 +60,6 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
 //        }
     }
 
-
     private String abbName(String s) {
         s = s.toLowerCase();
         s = (Normalizer.normalize(s, Normalizer.Form.NFD));
@@ -59,7 +69,7 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
                 abb += s.charAt(i);
             }
         }
-        return abb.substring(0,Math.min(abb.length(),1));
+        return abb.substring(0, Math.min(abb.length(), 1));
     }
 
     @Override

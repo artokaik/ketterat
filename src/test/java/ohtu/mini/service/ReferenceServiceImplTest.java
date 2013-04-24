@@ -34,7 +34,39 @@ public class ReferenceServiceImplTest {
     }
 
     @Test
-    public void generateAbbreviationWorksIfThreeReferenceHasTheSameAbbreviation() {
+    public void generateAbbreviationWorkswithDutchName() {
+        Reference reference = new Reference();
+        reference.setAuthor("de Boer, Frank");
+        reference.setTitle("Pretty good article");
+        reference.setJournal("J. Comput. Small Coll.");
+        reference.setVolume(19);
+        reference.setNumber(6);
+        reference.setYear(2004);
+        reference.setPages("259--269");
+        reference.setPublisher("Consortium for Computing Sciences in Colleges");
+        reference.setAddress("USA");
+        rsi.add(reference);
+        Assert.assertEquals("deb04", reference.getAbbreviation());
+    }
+
+    @Test
+    public void generateAbbreviationWorkswhenNameIncludesScandicLetters() {
+        Reference reference = new Reference();
+        reference.setAuthor("Hämäläinen, Yrjö");
+        reference.setTitle("Pretty good article");
+        reference.setJournal("J. Comput. Small Coll.");
+        reference.setVolume(19);
+        reference.setNumber(6);
+        reference.setYear(2005);
+        reference.setPages("259--269");
+        reference.setPublisher("Consortium for Computing Sciences in Colleges");
+        reference.setAddress("USA");
+        rsi.add(reference);
+        Assert.assertEquals("ham05", reference.getAbbreviation());
+    }
+
+    @Test
+    public void generateAbbreviationWorksIfThreeReferencesHaveTheSameAbbreviation() {
         Reference reference = new Reference();
         reference.setAuthor("Whittington, James");
         reference.setTitle("Pretty good article");
@@ -46,7 +78,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("Whi04", reference.getAbbreviation());
+        Assert.assertEquals("whi04", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -59,7 +91,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("Whi04a", reference.getAbbreviation());
+        Assert.assertEquals("whi04a", reference.getAbbreviation());
 
         reference = new Reference();
         reference.setAuthor("Whittington, James");
@@ -72,7 +104,7 @@ public class ReferenceServiceImplTest {
         reference.setPublisher("Consortium for Computing Sciences in Colleges");
         reference.setAddress("USA");
         rsi.add(reference);
-        Assert.assertEquals("Whi04b", reference.getAbbreviation());
+        Assert.assertEquals("whi04b", reference.getAbbreviation());
     }
 
     @Test
@@ -93,7 +125,7 @@ public class ReferenceServiceImplTest {
         List<Reference> references = new ArrayList<Reference>();
         Reference reference = new Reference();
         reference.setId(1);
-        reference.setAbbreviation("Whi04");
+        reference.setAbbreviation("whi04");
         reference.setAuthor("Whittington, Keith J.");
         reference.setTitle("Infusing active learning into introductory programming courses");
         reference.setJournal("J. Comput. Small Coll.");
@@ -107,7 +139,7 @@ public class ReferenceServiceImplTest {
 
         reference = new Reference();
         reference.setId(2);
-        reference.setAbbreviation("Kai13");
+        reference.setAbbreviation("kai13");
         reference.setAuthor("Kaikkonen, Arto");
         reference.setTitle("otsikko");
         reference.setJournal("lehti");
@@ -122,7 +154,7 @@ public class ReferenceServiceImplTest {
     }
 
     private String addedReferencesToString() {
-        String bibtex = "@article{Whi04,\n"
+        String bibtex = "@article{whi04,\n"
                 + "    author = {Whittington, Keith J.},\n"
                 + "    title = {Infusing active learning into introductory programming courses},\n"
                 + "    journal = {J. Comput. Small Coll.},\n"
@@ -134,7 +166,7 @@ public class ReferenceServiceImplTest {
                 + "    address = {USA},\n"
                 + "}"
                 + "\n"
-                + "@article{Kai13,\n"
+                + "@article{kai13,\n"
                 + "    author = {Kaikkonen, Arto},\n"
                 + "    title = {otsikko},\n"
                 + "    journal = {lehti},\n"

@@ -1,4 +1,4 @@
-@article{Whi04,
+@article{whi04,
     author = {Whittington, Keith J.},
     title = {Infusing active learning into introductory programming courses},
     journal = {J. Comput. Small Coll.},
@@ -9,7 +9,7 @@
     publisher = {Consortium for Computing Sciences in Colleges},
     address = {USA},
 }
-@article{Kai13,
+@article{kai13,
     author = {Kaikkonen, Arto},
     title = {otsikko},
     journal = {lehti},

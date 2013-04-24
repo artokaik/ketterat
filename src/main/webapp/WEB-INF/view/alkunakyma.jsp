@@ -4,6 +4,7 @@
     Author     : eolaine
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,15 +17,24 @@
         <h2>Järjestelmässä olevat viitteet</h2>
 
         <c:forEach var="reference" items="${references}">
-            <li>${reference}<br/><br/>
-        </c:forEach>
+            <form action="${pageContext.request.contextPath}/poistaviite" method="DELETE">
+                <li>${reference}<br/>
+                    <input type="submit" value="Poista"><br/>
+            </form>
 
+        </c:forEach> 
+
+
+        <br>
+        <br>
         <a href="bibfile.tex">BibTex-linkki</a>
 
         <h2>Lisää uusi viite</h2>
 
-        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-            Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
+        
+            
+            <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+            Viitetyyppi: <input type="text" name="reftype" size="50" value=""/><br/>
             Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
             Toimittaja/Editor: <input type="text" name="editor" size="50" value=""><br/>
             Nimi/Title: <input type="text" name="title" size="50" value=""><br/>
@@ -40,33 +50,35 @@
             Osoite/Address: <input type="text" name="address" size="24" value=""><br/><br/>
             <input type="submit" value="Lisää" name="viite"><br/>        
         </form>
-            
-<!--        <h2>Lisää uusi konferenssiartikkeliviite</h2>
 
-        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-            Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
-            Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
-            Artikkelin nimi/Title: <input type="text" name="title" size="50" value=""><br/>
-            Pöytäkirjan nimi/Booktitle: <input type="text" name="bookTitle" value=""><br/>
-            Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
-            Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
-            Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
-            <input type="submit" value="Lisää" name="viite"><br/>        
-        </form>
-            
-        <h2>Lisää uusi kirjaviite</h2>
 
-        <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
-            Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
-            Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
-            Kirjan nimi/Title: <input type="text" name="title" size="50" value=""><br/>
-            Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
-            Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
-            Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
-            <input type="submit" value="Lisää" name="viite"><br/>        
-        </form>-->
-            
-            
+
+        <!--        <h2>Lisää uusi konferenssiartikkeliviite</h2>
+        
+                <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+                    Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
+                    Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
+                    Artikkelin nimi/Title: <input type="text" name="title" size="50" value=""><br/>
+                    Pöytäkirjan nimi/Booktitle: <input type="text" name="bookTitle" value=""><br/>
+                    Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
+                    Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
+                    Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
+                    <input type="submit" value="Lisää" name="viite"><br/>        
+                </form>
+                    
+                <h2>Lisää uusi kirjaviite</h2>
+        
+                <form action="${pageContext.request.contextPath}/lisaaviite" method="POST">
+                    Lyhenne/Abbreviation: <input type="text" name="abbreviation" size="5" value=""><br/>
+                    Kirjoittaja/Author: <input type="text" name="author" size="50" value=""><br/>
+                    Kirjan nimi/Title: <input type="text" name="title" size="50" value=""><br/>
+                    Vuosi/Year: <input type="text" name="year" size="5" value="0"><br/>           
+                    Sivut/Pages: <input type="text" name="pages" size="10" value=""><br/>
+                    Julkaisija/Publisher: <input type="text" name="publisher" size="24" value=""><br/>
+                    <input type="submit" value="Lisää" name="viite"><br/>        
+                </form>-->
+
+
     </body>
 
 </html>

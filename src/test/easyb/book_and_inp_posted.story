@@ -1,5 +1,7 @@
 import org.openqa.selenium.*
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.ui.Select;
+
 
 description 'User can post any reference into the system'
 
@@ -8,15 +10,15 @@ scenario "user can post an inproceedings reference to the system", {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
-    when 'all the information is entered, add-button and bibtex-button clicked', {
-        SelectElement select = new SelectElement(driver.findElement( By.name("reftype"));
-        select.SelectByText("Inproceedings");
-        select.Submit();
+    when 'all the information is entered with reftype inproceedings chosen, add-button and bibtex-button clicked', {
+        webElement = driver.findElement(By.name("reftype"));
+        Select select = new Select(webElement);
+        select.selectByValue("inproceedings");
 
         element = driver.findElement(By.name("author"));
         element.sendKeys("Arto Koo");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("In");
+        element.sendKeys("Inp. title");
 
         element = driver.findElement(By.name("volume"));
         element.sendKeys("1994");
@@ -29,7 +31,7 @@ scenario "user can post an inproceedings reference to the system", {
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("WSOY");
         element = driver.findElement(By.name("address"));
-        element.sendKeys("Tiekat 1A1, Helsinki, Finland");
+        element.sendKeys("Ruotsi");
 
         element = driver.findElement(By.name("viite"));
         element.submit();
@@ -37,31 +39,45 @@ scenario "user can post an inproceedings reference to the system", {
         element.click();
     }     
     then 'reference is saved as inproceedings to the database and can be found from the bibtex-list', {
-        driver.getPageSource().contains("@inproceedings{a92,").shouldBe true
+        driver.getPageSource().contains("@inproceedings").shouldBe true
+        driver.getPageSource().contains("a92").shouldBe true
     }
 }
 
-scenario "user can post article even if some fields are empty", {
+scenario "user can post a book reference to the system", {
     given 'form for posting articles to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
-    when 'some information is entered but some fields are empty', {
+    when 'all the information is entered with reftype book chosen,, add-button and bibtex-button clicked', {
+        webElement = driver.findElement(By.name("reftype"));
+        Select select = new Select(webElement);
+        select.selectByValue("book");
 
         element = driver.findElement(By.name("author"));
-        element.sendKeys("Arto Kaikkonen");
+        element.sendKeys("Qirjoittaja, Kalle");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("Hemmetin hyvä artikkeli");
+        element.sendKeys("Kirjan nimi");
+
+        element = driver.findElement(By.name("volume"));
+        element.sendKeys("1994");
+        element = driver.findElement(By.name("number"));
+        element.sendKeys("3");
         element = driver.findElement(By.name("year"));
-        element.sendKeys("1990");
+        element.sendKeys("1944");
+        element = driver.findElement(By.name("pages"));
+        element.sendKeys("12-15");
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("WSOY");
+        element = driver.findElement(By.name("address"));
+        element.sendKeys("Suomi");
 
         element = driver.findElement(By.name("viite"));
         element.submit();
+        element = driver.findElement(By.linkText("BibTex-linkki"));
+        element.click();
     }     
-    then 'reference is saved to the database', {
-        driver.getPageSource().contains("Arto Kaikkonen (1990)").shouldBe true
+    then 'reference is saved as inproceedings to the database and can be found from the bibtex-list', {
+        driver.getPageSource().contains("@book{q44,").shouldBe true
     }
 }
-

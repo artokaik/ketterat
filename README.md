@@ -10,4 +10,8 @@ https://docs.google.com/spreadsheet/ccc?key=0AlN8O5iuc3f2dFd4OEJ0eEhlb2Eyc1BCMy1
 Ci-raportti:
 
 http://jenkins.staff.cs.helsinki.fi/job/Ketterat-miniprojekti/
+
+Ohjelma:
+
+http://t-pslaakso.users.cs.helsinki.fi/miniprojekti-1.0-SNAPSHOT/
 	

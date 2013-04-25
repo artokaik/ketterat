@@ -26,7 +26,7 @@
 
     <br>
     <br>
-    <a href="bibfile.tex">BibTex-linkki</a>
+    <a href="sigproc.bib">BibTex-linkki</a>
 
     <h2>Lisää uusi viite</h2>
 

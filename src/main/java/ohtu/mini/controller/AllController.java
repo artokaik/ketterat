@@ -58,9 +58,9 @@ public class AllController {
         return "redirect:/alkunakyma";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "bibfile.tex")
+    @RequestMapping(method = RequestMethod.GET, value = "sigproc.bib")
     public void getBibFile(HttpServletResponse response) {
-        String filename = "refFile.txt";
+        String filename = "sigproc.bib";
         try {
             refService.generateBibtex(filename, refService.list());
             File file = new File(filename);

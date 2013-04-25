@@ -38,13 +38,13 @@ public class ReferenceServiceImpl implements ReferenceServiceInterface {
         String year = reference.getYear() + "";
         if (year.length() < 4) {
             if (year.length() == 3) {
-                year = " " + year;
+                year = "0" + year;
             }
             if (year.length() == 2) {
-                year = "  " + year;
+                year = "00" + year;
             }
             if (year.length() == 1) {
-                year = "   " + year;
+                year = "000" + year;
             }
         }
         year = year.substring(2, 4);

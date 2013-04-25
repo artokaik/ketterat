@@ -1,9 +1,9 @@
 import org.openqa.selenium.*
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-description 'User can post an article reference into the system'
+description 'User cannot post references if vital information is missing or not correctly entered'
 
-scenario "user can't post an article reference without title", {
+scenario "user cannot post an article reference without title", {
     given 'form for posting references to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
@@ -34,7 +34,7 @@ scenario "user can't post an article reference without title", {
     }
 }
 
-scenario "user can't post a reference if there are letters in year field", {
+scenario "user cannot post a reference if there are letters in year field", {
     given 'form for posting references to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 description 'User can post any reference into the system'
 
 scenario "user can post an inproceedings reference to the system", {
-    given 'form for posting articles to the system is opened', {
+    given 'form for posting references to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }
@@ -45,7 +45,7 @@ scenario "user can post an inproceedings reference to the system", {
 }
 
 scenario "user can post a book reference to the system", {
-    given 'form for posting articles to the system is opened', {
+    given 'form for posting references to the system is opened', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniprojekti/alkunakyma");      
     }

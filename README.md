@@ -15,7 +15,7 @@ Ohjelma:
 
 http://t-pslaakso.users.cs.helsinki.fi/miniprojekti-1.0-SNAPSHOT/
 
-Loppuraportti:
+Loppuraportti (keskeneräinen):
 
 https://docs.google.com/document/d/18UAYAJENa4ezI7oR0lIWeVazOK1aAJmxh1w6g-2ys5k/edit?usp=sharing
 	
